@@ -1,19 +1,28 @@
 # AGENTS
 
-## Codex Operating Rules
-- Default to practical execution over abstract planning
-- Every change should improve long-term learning velocity or quality
-- Prefer templates/playbooks over ad-hoc notes
-- Keep artifacts concise, testable, and easy to review
+Use this repository as a tool-agnostic, portable skill library.
 
-## Definition of Done for Learning Work
-- Problem/context documented
-- Decision or insight captured
-- Evidence attached (code, benchmark, design note, or reflection)
-- Next action is explicit
+## Operating Rules
 
-## Skills
-A skill is a set of local instructions stored in a `SKILL.md` file.
+- Use the closest matching skill in `skills/` before inventing a new workflow.
+- Keep all content personal-only and reusable across assistants.
+- Never add work confidential information, internal names, or private corporate links.
+- Prefer concise instructions, concrete examples, and explicit guardrails.
 
-### Available skills
-- write-in-jasmea-voice: Write drafts in Jason Means's Medium voice (direct, reflective, practical) using patterns from medium.com/@jasmea articles. Use when the user asks for personal-brand writing, post drafts, rewrites, or edits that should sound like Jason. (file: /Users/jasonmeans/code_personal/skills-learnings/skills/write-in-jasmea-voice/SKILL.md)
+## Skill Contract
+
+Every skill must live at `skills/<lowercase-kebab-case>/SKILL.md` and include:
+- Purpose
+- When to use
+- Inputs
+- Outputs
+- Steps
+- Examples
+- Non-goals / Guardrails
+
+## Available Skills
+
+- `write-in-jasmea-voice`: Draft and revise long-form writing in Jason Means' personal Medium voice.
+  File: `skills/write-in-jasmea-voice/SKILL.md`
+- `engineering-foundations`: Build repeatable engineering fundamentals across architecture, testing, and delivery.
+  File: `skills/engineering-foundations/SKILL.md`

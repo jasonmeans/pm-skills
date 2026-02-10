@@ -1,33 +1,33 @@
-# skills-learnings
+# agent-skills
 
-This is the deep-focus `#1` repository for your skill development system.
+Portable personal skills repository for agent-friendly workflows.
 
-## Mission
-Create a durable, measurable loop for learning, practicing, and retaining technical skills with Codex support.
+## Workspace Root
 
-## Core Outcomes
-- Build reusable skills/playbooks
-- Capture learnings in structured logs
-- Convert learning into portfolio-grade artifacts
-- Continuously improve your personal engineering operating system
+This repo is intended to live under:
+`~/code/personal/agent-skills`
 
-## Repository Structure
-- `skills/`: individual skill specs with scope, drills, and evidence
-- `learnings/`: daily and weekly learning logs
-- `projects/`: focused mini-projects tied to skill objectives
-- `docs/playbooks/`: repeatable workflows
-- `docs/standards/`: engineering and execution standards
-- `docs/metrics/`: objective skill progression scorecards
-- `docs/adr/`: architectural and process decisions
-- `.github/`: templates and CI standards
+## Canonical Structure
 
-## Operating Cadence
-- Daily: `scripts/new_daily_log.sh` + focused skill drill
-- Weekly: run `docs/playbooks/weekly-review.md`
-- Monthly: update `docs/metrics/skill-scorecard.md`
+- `skills/`: reusable skills, one folder per skill (`<skill-name>/SKILL.md`)
+- `templates/`: reusable writing and planning templates
+- `CLAUDE.md`: concise usage rules for any assistant
+- `AGENTS.md`: tool-agnostic operating rules and skill index
+- `notes/`: archived legacy material and learnings retained for reference
 
-## Quality Bar
-Every merged change should improve at least one of:
-- clarity (better definitions/templates)
-- rigor (stronger evidence/metrics)
-- leverage (reusable playbook/automation)
+## Skills
+
+- `skills/write-in-jasmea-voice/SKILL.md`
+- `skills/engineering-foundations/SKILL.md`
+
+## Add A New Skill
+
+1. Create `skills/<lowercase-kebab-case>/SKILL.md`.
+2. Add frontmatter with `name` and `description`.
+3. Include sections: Purpose, When to use, Inputs, Outputs, Steps, Examples, Non-goals / Guardrails.
+4. Update `AGENTS.md` and this README skill list.
+
+## Safety Rules
+
+- Never include work confidential information.
+- Keep skills portable and personal-only.

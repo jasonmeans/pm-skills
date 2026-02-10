@@ -1,75 +1,56 @@
 ---
 name: write-in-jasmea-voice
-description: Write and rewrite content in Jason Means's Medium voice using patterns from medium.com/@jasmea articles. Use when the user asks for leadership or career storytelling, practical team/process guidance, reflective personal lessons, or edits that should sound like Jason instead of generic business writing.
+description: Write and rewrite long-form posts in Jason Means's personal Medium voice using story-first structure, practical frameworks, and reflective coaching tone. Use for career, leadership, productivity, and work-culture writing that should sound like Jason rather than generic business content.
 ---
 
 # Write In Jasmea Voice
 
-## Overview
+## Purpose
 
-Write with a personal, story-driven technique: start with lived experience, bridge to a lesson, then deliver practical guidance readers can apply immediately.
+Produce personal, story-driven writing that blends lived experience with practical frameworks readers can apply immediately.
 
-## Workflow
+## When to Use
 
-1. Confirm output type: full article, rewrite, expansion, or edit pass.
-2. Draft a personal opening scene with specific details (time, place, people, pressure).
-3. Bridge to the topic with a humility frame ("this is what worked for me").
-4. Build body sections around a repeatable framework and concrete examples.
-5. Add at least one visual suggestion with an italic caption.
-6. Close with reflection, a clear next step, and 3-5 engagement questions.
+- Drafting or rewriting Medium-style posts in Jason's voice.
+- Turning personal career lessons into structured, actionable articles.
+- Editing writing that feels too generic, corporate, or impersonal.
 
-## Article Arc
+## Inputs
 
-Use this default arc:
+- Topic and target audience.
+- Output type: draft, rewrite, outline, or edit pass.
+- Desired length and call to action.
+- Optional: source story details (people, place, timeframe, turning point).
 
-Personal Story Hook -> Bridge and Caveat -> Framework Sections -> Reflection and Reader Questions
+## Outputs
 
-## Voice Profile
+- A paragraph-forward article draft in Jason's voice.
+- At least one named method or framework.
+- Suggested image placements with italic captions.
+- A close with concrete next action and reader engagement questions.
 
-Follow these voice constraints:
+## Steps
 
-- Write in first person and speak directly to the reader.
-- Prioritize paragraph form; keep paragraphs short (1-4 sentences).
-- Lead with vulnerability, then turn vulnerability into a practical lesson.
-- Blend warmth, humility, and direct coaching without sounding preachy.
-- Use concrete nouns, named people, and real scenarios over abstractions.
-- Keep tone conversational and grounded, with light self-aware humor when natural.
-- Prefer practical optimism over motivational hype.
+1. Start with a vivid personal anecdote (specific moment, stakes, and emotion).
+2. Bridge into the topic with humility: share experience, do not lecture.
+3. Build short sections that move from story to lesson to practical method.
+4. Add one or more actionable lists readers can use within 24 hours.
+5. Suggest image/diagram placements and include italic caption text.
+6. Close by tying back to the opening and ending with 3-5 engagement questions.
 
-## Structure Rules
+## Examples
 
-- Open with a vivid anecdote, not a thesis statement.
-- Use short section headers (2-6 words); questions are welcome.
-- Organize practical guidance into numbered lists when teaching a method.
-- Name frameworks when relevant (`RACI`, `1-3-5`, `question storming`, etc.).
-- Reuse a phrase or mantra across the article when it fits the topic.
-- End by tying back to the opening story or phrase.
+- Topic: interviews as jazz vs classical.
+  Output pattern: personal interview miss -> improv metaphor -> practical interview framework -> reader questions.
+- Topic: work-life balance under pressure.
+  Output pattern: lived stress scenario -> boundary lesson -> 3-step operating approach -> 30-day challenge.
 
-## Visual Guidance
+## Non-goals / Guardrails
 
-When drafting for Medium, explicitly suggest image placement:
-
-- Add one image or diagram after a key concept shift.
-- Add one image near the practical framework if it helps comprehension.
-- Put a short italic caption under each image that explains why it matters.
-
-Example caption style:
-`*This visual shows how competing priorities can crowd out strategic focus.*`
-
-## Recurring Devices
-
-- Contrast two approaches to the same problem.
-- Anticipate reader objections and answer them directly.
-- Use practical "Pro Tip" callouts sparingly.
-- Include one honest admission of a past mistake, then state the lesson.
-
-## Copy Constraints
-
-- Do not mimic exact phrasing from source articles.
-- Do not drift into sterile corporate tone.
-- Do not use vague productivity platitudes or filler.
-- Do not write as an all-knowing expert; write as a practitioner sharing field notes.
-- Keep every major claim anchored to an explicit example, scenario, or method.
+- Do not copy source articles verbatim or mimic exact phrasing.
+- Do not use sterile corporate tone, clickbait, or vague productivity platitudes.
+- Do not invent personal stories presented as factual events.
+- Do not include work confidential information, internal names, or proprietary details.
 
 ## Sources Used For Style Calibration
 
@@ -79,14 +60,3 @@ Example caption style:
 - https://medium.com/@jasmea/the-power-of-question-storming-7f2f19c4fceb
 - https://medium.com/@jasmea/humility-d29b88f5c04e
 - https://medium.com/@jasmea/layoff-advice-for-friends-6ee3f738cdee
-
-## Output Checklist
-
-Before finalizing, verify all are true:
-
-- Opening starts with a concrete personal story.
-- Body is paragraph-forward and includes named examples.
-- Draft includes at least one framework or named method.
-- At least one image suggestion and italic caption are present.
-- Advice is actionable within 24 hours.
-- Ending includes a concrete CTA plus 3-5 engagement questions.
