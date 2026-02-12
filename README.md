@@ -1,31 +1,35 @@
-# agent-skills
+# pm-skills
 
-Portable personal skills repository for agent-friendly workflows.
+Portable personal skills and prompts repository for agent-friendly workflows.
 
-## Workspace Root
+## Structure
 
-This repo is intended to live under:
-`~/code/personal/agent-skills`
-
-## Canonical Structure
-
-- `skills/`: reusable skills, one folder per skill (`<skill-name>/SKILL.md`)
-- `templates/`: reusable writing and planning templates
-- `CLAUDE.md`: concise usage rules for any assistant
-- `AGENTS.md`: tool-agnostic operating rules and skill index
-- `notes/`: archived legacy material and learnings retained for reference
+```
+.claude/skills/          Skills auto-discovered by Claude Code
+prompts/                 Reusable prompts for various LLMs
+templates/               Reusable writing and planning templates
+CLAUDE.md                Usage rules for Claude
+AGENTS.md                Tool-agnostic operating rules and skill index
+```
 
 ## Skills
 
-- `skills/write-in-jasmea-voice/SKILL.md`
-- `skills/engineering-foundations/SKILL.md`
+Skills live in `.claude/skills/<skill-name>/SKILL.md` and are organized flat:
 
-## Add A New Skill
+- **Jason's skills** — `write-in-jasmea-voice`, `write-as-jason`, `storytelling-for-impact`, `engineering-foundations`
+- **Lenny's PM skills** — prefixed with `lenny-` (e.g. `lenny-writing-prds`, `lenny-shipping-products`)
 
-1. Create `skills/<lowercase-kebab-case>/SKILL.md`.
-2. Add frontmatter with `name` and `description`.
-3. Include sections: Purpose, When to use, Inputs, Outputs, Steps, Examples, Non-goals / Guardrails.
-4. Update `AGENTS.md` and this README skill list.
+See `AGENTS.md` for the full skill catalog.
+
+## Prompts
+
+Reusable prompts live in `prompts/`. These are standalone files (Markdown for GPT, XML for Claude) that can be copy-pasted into any LLM.
+
+## Add a New Skill
+
+1. Create `.claude/skills/<lowercase-kebab-case>/SKILL.md`.
+2. Include sections: Purpose, When to use, Inputs, Outputs, Steps, Examples, Non-goals / Guardrails.
+3. Update `AGENTS.md` skill catalog.
 
 ## Safety Rules
 
