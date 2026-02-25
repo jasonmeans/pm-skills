@@ -2,6 +2,7 @@
 
 > **Owner:** Jason Means
 > **Created:** 2026-02-12
+> **Last updated:** 2026-02-25
 > **Tools:** Claude (work), Claude Code (dev), ChatGPT (personal), Gemini (transcription), Grok (image/video), Office 365 Copilot (work productivity)
 
 ---
@@ -10,126 +11,99 @@
 
 This document has three parts:
 
-1. **Prompt Catalog** — Every prompt you need, organized by tool and context
-2. **Meta-Prompt for Claude (XML)** — Paste this into Claude to generate any work prompt from the catalog
-3. **Meta-Prompt for ChatGPT (Markdown)** — Paste this into ChatGPT to generate any personal prompt from the catalog
+1. **Prompt Catalog** — Every prompt in the repo, organized by tool and category, with file paths
+2. **Meta-Prompt for Claude (XML)** — Paste into Claude to generate new work prompts
+3. **Meta-Prompt for ChatGPT (Markdown)** — Paste into ChatGPT to generate new personal prompts
+
+For quick-start usage instructions and contribution guidelines, see [README.md](./README.md).
 
 ---
 
 ## Part 1: Prompt Catalog
 
-### 🏢 WORK — Claude Projects (XML Format, stored in GitLab)
+### Claude Prompts — XML Format (`claude/`)
 
-#### Project: PRD & Product Documentation
+#### PRD & Product Documentation
 
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| W-01 | **PRD Writer** | Generate a full PRD from a problem statement, including goals, non-goals, user stories, success metrics, technical considerations, and milestones. Tailored to TTD's developer platform context. |
-| W-02 | **PRD Reviewer / Red Team** | Critique a draft PRD — find gaps in scope, missing edge cases, unclear success metrics, unstated assumptions, and dependencies. |
-| W-03 | **One-Pager Generator** | Distill a complex initiative into a 1-page executive summary for leadership with problem, proposal, impact, and ask. |
-| W-04 | **Technical Spec Translator** | Take an engineering technical design doc and translate it into product-facing language for stakeholders, or vice versa. |
-| W-05 | **API Documentation Reviewer** | Review developer-facing API docs for clarity, completeness, consistency, and developer experience best practices. |
-| W-06 | **Release Notes Writer** | Generate external-facing release notes from a list of shipped features, bug fixes, and changes — written for a developer audience. |
-| W-07 | **RFC/Decision Doc Writer** | Structure a decision document with context, options analysis, recommendation, risks, and reversibility assessment. |
+| File | Prompt Name | Purpose |
+|------|------------|---------|
+| `claude/write-prd.xml` | **PRD Writer** | Generate a full Milestone PRD from a problem statement — goals, non-goals, user stories, success metrics, technical considerations, and milestones. |
+| `claude/prd-reviewer.xml` | **PRD Reviewer / Red Team** | Critique a draft PRD — find gaps in scope, missing edge cases, unclear success metrics, unstated assumptions, and dependencies. |
+| `claude/one-pager-generator.xml` | **One-Pager Generator** | Distill a complex initiative into a 1-page executive summary for leadership with problem, proposal, impact, and ask. |
+| `claude/technical-spec-translator.xml` | **Technical Spec Translator** | Translate between engineering technical design docs and product-facing language for stakeholders. |
+| `claude/api-documentation-reviewer.xml` | **API Documentation Reviewer** | Review developer-facing API docs for clarity, completeness, consistency, and DX best practices. |
+| `claude/release-notes-writer.xml` | **Release Notes Writer** | Generate external-facing release notes from shipped features, bug fixes, and changes — written for a developer audience. |
+| `claude/rfc-decision-doc-writer.xml` | **RFC / Decision Doc Writer** | Structure a decision document with context, options analysis, recommendation, risks, and reversibility assessment. |
 
-#### Project: User & Customer Insights
+#### User & Customer Insights
 
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| W-08 | **User Feedback Analyzer** | Take raw user/developer feedback (support tickets, Slack threads, survey responses) and extract themes, severity, frequency, and actionable insights. |
-| W-09 | **Developer Journey Mapper** | Map the end-to-end developer experience for a specific workflow on TTD's platform — identify friction points, drop-offs, and opportunities. |
-| W-10 | **Competitive Analysis Structurer** | Analyze a competitor's developer platform (API design, docs, DX) against TTD's offering with a structured comparison framework. |
-| W-11 | **Customer Interview Prep** | Generate an interview guide with open-ended questions, follow-up probes, and things to listen for, given a research objective. |
-| W-12 | **Feedback-to-Backlog Converter** | Take synthesized feedback themes and convert them into well-structured backlog items with user stories, acceptance criteria, and priority rationale. |
+| File | Prompt Name | Purpose |
+|------|------------|---------|
+| `claude/user-feedback-analyzer.xml` | **User Feedback Analyzer** | Extract themes, severity, frequency, and actionable insights from raw user/developer feedback (support tickets, Slack threads, survey responses). |
+| `claude/developer-journey-mapper.xml` | **Developer Journey Mapper** | Map end-to-end developer experience for a specific workflow — identify friction points, drop-offs, and opportunities. |
+| `claude/competitive-analysis-structurer.xml` | **Competitive Analysis Structurer** | Structured comparison of a competitor's developer platform (API design, docs, DX) against your offering. |
+| `claude/customer-interview-prep.xml` | **Customer Interview Prep** | Generate an interview guide with open-ended questions, follow-up probes, and things to listen for. |
+| `claude/feedback-to-backlog-converter.xml` | **Feedback-to-Backlog Converter** | Convert synthesized feedback themes into backlog items with user stories, acceptance criteria, and priority rationale. |
 
-#### Project: Strategy & Communication
+#### Strategy & Communication
 
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| W-13 | **Stakeholder Update Writer** | Generate a concise status update email/doc for cross-functional stakeholders — progress, blockers, decisions needed, next steps. |
-| W-14 | **Prioritization Framework Builder** | Apply RICE, ICE, or custom prioritization to a set of initiatives with structured scoring and rationale. |
-| W-15 | **Meeting Prep Brief** | Given a meeting topic and attendees, generate an agenda, key questions to drive, pre-read summary, and desired outcomes. |
-| W-16 | **Quarterly Planning Narrative** | Write a planning narrative that connects team OKRs to company strategy, articulates the "why now," and sequences initiatives. |
-| W-17 | **Exec Presentation Storyline** | Structure a presentation narrative arc for leadership — situation, complication, resolution format with data callouts. |
+| File | Prompt Name | Purpose |
+|------|------------|---------|
+| `claude/stakeholder-update-writer.xml` | **Stakeholder Update Writer** | Generate concise status updates for cross-functional stakeholders — progress, blockers, decisions needed, next steps. |
+| `claude/prioritization-framework-builder.xml` | **Prioritization Framework Builder** | Apply RICE, ICE, or custom prioritization to a set of initiatives with structured scoring and rationale. |
+| `claude/meeting-prep-brief.xml` | **Meeting Prep Brief** | Generate agenda, key questions, pre-read summary, and desired outcomes for a meeting. |
+| `claude/quarterly-planning-narrative.xml` | **Quarterly Planning Narrative** | Connect team OKRs to company strategy, articulate the "why now," and sequence initiatives. |
+| `claude/exec-presentation-storyline.xml` | **Exec Presentation Storyline** | Structure a presentation narrative arc for leadership — situation, complication, resolution format with data callouts. |
 
-#### Project: New PM Ramp-Up (First 90 Days @ TTD)
+#### New PM Ramp-Up (First 90 Days)
 
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| W-18 | **Codebase & Architecture Interrogator** | Generate smart questions to ask engineers about system architecture, data flows, and technical debt — tailored to developer platforms. |
-| W-19 | **Stakeholder Map Builder** | Help map the org — who owns what, who are decision makers vs. influencers, who to build relationships with and why. |
-| W-20 | **Domain Knowledge Accelerator** | Given a topic area (e.g., programmatic advertising, RTB, identity resolution), generate a structured learning plan with key concepts, questions to ask, and things to read. |
-| W-21 | **30-60-90 Day Plan Tracker** | Structure and track onboarding goals, learnings, quick wins, and relationship-building milestones. |
-| W-22 | **"What I've Learned" Synthesis** | Take raw notes from onboarding conversations and synthesize into a structured knowledge base — themes, open questions, hypotheses. |
+| File | Prompt Name | Purpose |
+|------|------------|---------|
+| `claude/codebase-architecture-interrogator.xml` | **Codebase & Architecture Interrogator** | Generate smart questions about system architecture, data flows, and technical debt — tailored to developer platforms. |
+| `claude/stakeholder-map-builder.xml` | **Stakeholder Map Builder** | Map the org — decision makers, influencers, relationships to build and why. |
+| `claude/domain-knowledge-accelerator.xml` | **Domain Knowledge Accelerator** | Generate a structured learning plan for a topic area with key concepts, questions to ask, and things to read. |
+| `claude/thirty-sixty-ninety-day-plan.xml` | **30-60-90 Day Plan** | Structure and track onboarding goals, learnings, quick wins, and relationship-building milestones. |
+| `claude/what-ive-learned-synthesis.xml` | **"What I've Learned" Synthesis** | Synthesize raw onboarding notes into a structured knowledge base — themes, open questions, hypotheses. |
 
-#### Project: Claude Code (Dev Workflow)
+#### Dev Workflow (Claude Code)
 
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| W-23 | **Code Review Context Prompt** | Give Claude Code context about TTD's codebase patterns, conventions, and architecture so it can do meaningful code reviews. |
-| W-24 | **Script Generator for PM Workflows** | Generate utility scripts (Python/bash) for PM tasks — data extraction, metric dashboards, automated reporting. |
-| W-25 | **GitLab MR Description Writer** | Generate well-structured merge request descriptions from a diff — what changed, why, testing done, rollback plan. |
+| File | Prompt Name | Purpose |
+|------|------------|---------|
+| `claude/code-review-context.xml` | **Code Review Context** | Give Claude Code context about codebase patterns, conventions, and architecture for meaningful code reviews. |
+| `claude/script-generator-pm-workflows.xml` | **Script Generator for PM Workflows** | Generate utility scripts (Python/bash) for PM tasks — data extraction, metric dashboards, automated reporting. |
+| `claude/gitlab-mr-description-writer.xml` | **MR Description Writer** | Generate well-structured merge request descriptions from a diff — what changed, why, testing done, rollback plan. |
 
-#### Project: Office 365 Copilot Prompts
+#### Office 365 / Copilot
 
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| W-26 | **Teams Meeting Summarizer** | Post-meeting: extract decisions, action items, owners, deadlines, and open questions from a Teams transcript. |
-| W-27 | **Email Thread Synthesizer** | Summarize a long Outlook email thread into key points, decisions, and what response is needed from you. |
-| W-28 | **Excel Data Analyzer** | Analyze product metrics in Excel — trends, anomalies, pivot table suggestions, chart recommendations. |
-| W-29 | **PowerPoint Narrative Builder** | Structure a deck in PowerPoint with a clear narrative arc, speaker notes, and data visualization suggestions. |
-| W-30 | **Deep Dive Podcast Script (NotebookLM-style)** | Generate a conversational deep-dive script from uploaded docs for the O365 podcast feature — good for team knowledge sharing. |
+| File | Prompt Name | Purpose |
+|------|------------|---------|
+| `claude/teams-meeting-summarizer.xml` | **Teams Meeting Summarizer** | Extract decisions, action items, owners, deadlines, and open questions from a Teams transcript. |
+| `claude/email-thread-synthesizer.xml` | **Email Thread Synthesizer** | Summarize a long Outlook email thread into key points, decisions, and what response is needed. |
+| `claude/excel-data-analyzer.xml` | **Excel Data Analyzer** | Analyze product metrics in Excel — trends, anomalies, pivot table suggestions, chart recommendations. |
+| `claude/powerpoint-narrative-builder.xml` | **PowerPoint Narrative Builder** | Structure a deck with a clear narrative arc, speaker notes, and data visualization suggestions. |
+| `claude/deep-dive-podcast-script.xml` | **Deep Dive Podcast Script** | Generate a conversational deep-dive script from uploaded docs — good for team knowledge sharing. |
+
+#### General / Uncategorized
+
+| File | Prompt Name | Purpose |
+|------|------------|---------|
+| `claude/es-product-manager.xml` | **ES Product Manager** | Product management prompt tailored for ES (engineering systems) context. |
 
 ---
 
-### 🏠 PERSONAL — ChatGPT Projects (Markdown Format, stored in Notion/Obsidian)
+### GPT Prompts — Markdown Format (`gpt/`)
 
-#### Project: Personal Health
+| File | Prompt Name | Purpose |
+|------|------------|---------|
+| `gpt/craft-framework-prompt-generator.md` | **CRAFT Framework Prompt Generator** | Meta-prompt using the CRAFT framework to generate new prompts for any tool or use case. |
 
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| P-01 | **Health Research Synthesizer** | Take a health topic and provide an evidence-based summary with key findings, what to discuss with your doctor, and reliable sources. |
-| P-02 | **Supplement/Medication Interaction Checker** | Given a list of supplements/medications, flag potential interactions, timing considerations, and questions for your physician. |
-| P-03 | **Family Health Tracker Organizer** | Structure health information for family members — appointments, medications, history, provider contacts — as a Notion database template. |
-| P-04 | **Fitness & Nutrition Plan Reviewer** | Review a workout/nutrition plan for balance, sustainability, and alignment with stated health goals. |
-| P-05 | **Lab Results Interpreter** | Help understand lab work results — what's in range, what's flagged, what questions to ask your doctor at follow-up. |
+---
 
-#### Project: Audio / Music Equipment / Vinyl Records
+### Gemini Prompts — Markdown Format (`gemini/`)
 
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| P-06 | **Gear Research & Comparison** | Compare audio equipment (turntables, speakers, DACs, amps) with specs, pros/cons, and value-for-money analysis at a given budget. |
-| P-07 | **Vinyl Record Valuation** | Research a specific pressing — identify edition, pressing plant, value range, and condition grading guidance. |
-| P-08 | **Audio Setup Optimizer** | Given your current equipment chain, suggest optimal placement, settings, cables, and upgrades for best sound quality. |
-| P-09 | **Record Collection Cataloger** | Structure a vinyl collection database for Notion — artist, album, pressing, condition, purchase price, current value, notes. |
-| P-10 | **Music Discovery Engine** | Based on artists/albums you love, surface deep-cut recommendations with reasoning, pressing recommendations, and where to find them. |
-
-#### Project: Photography
-
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| P-11 | **Photo Trip Planner** | Plan a photography outing — golden hour times, location scouting, shot list, gear checklist, weather considerations. |
-| P-12 | **Editing Workflow Advisor** | Given a style reference or mood, suggest Lightroom/editing settings, presets, and processing workflow. |
-| P-13 | **Gear Purchase Advisor** | Compare camera bodies, lenses, or accessories for specific use cases with real-world performance considerations. |
-| P-14 | **Portfolio Curator** | Help select and sequence photos for a portfolio or social media series with narrative and visual flow guidance. |
-| P-15 | **Photography Learning Path** | Structure a skill-building plan for a specific technique (e.g., astrophotography, street photography) with resources and practice exercises. |
-
-#### Project: Gemini — YouTube Learning Pipeline
-
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| P-16 | **Video Transcript Cleaner** | Take a raw YouTube transcript and clean it into readable, structured markdown with headers, key points, and timestamps. |
-| P-17 | **Video-to-Notion Knowledge Page** | Transform a cleaned transcript into a structured Notion page — summary, key takeaways, quotes, action items, related topics. |
-| P-18 | **Learning Synthesis Connector** | Take multiple video transcripts on related topics and synthesize into a unified knowledge document with cross-references. |
-| P-19 | **Video Recommendation Engine** | Given topics you're learning about, suggest the highest-quality YouTube channels and specific videos with reasoning. |
-
-#### Project: Grok — Visual Content Creation
-
-| # | Prompt Name | Purpose |
-|---|------------|---------|
-| P-20 | **Image Generation Brief** | Given a concept, generate a detailed Grok image prompt with style, composition, lighting, mood, and technical specifications. |
-| P-21 | **Short Video Storyboard** | Plan a short-form video — shot list, transitions, text overlays, music cues, and aspect ratio considerations. |
-| P-22 | **Image Modification Director** | Describe precise modifications to an existing image — what to change, what to preserve, style consistency notes. |
+| File | Prompt Name | Purpose |
+|------|------------|---------|
+| `gemini/youtube-summary.md` | **YouTube Summary** | Summarize and structure a YouTube video transcript into readable markdown with key points and timestamps. |
 
 ---
 
@@ -148,13 +122,11 @@ that are structured in XML format, designed for use in Claude Projects.
 <context>
 <user_profile>
   <title>Product Manager, Developer Platforms</title>
-  <company>The Trade Desk (TTD)</company>
-  <tenure>New hire, approximately 2 months in</tenure>
   <domain>Programmatic advertising, developer tools, APIs, SDKs, developer experience</domain>
   <tools>
     <primary_ai>Claude (chat + projects)</primary_ai>
     <dev_ai>Claude Code</dev_ai>
-    <work_notes>Markdown and XML files in GitLab</work_notes>
+    <work_notes>Markdown and XML files in a version-controlled repo</work_notes>
     <work_suite>Office 365 with Copilot</work_suite>
   </tools>
   <workflow>
@@ -169,18 +141,18 @@ that are structured in XML format, designed for use in Claude Projects.
 When I ask you to create a prompt, follow this process:
 
 <step number="1" name="Clarify">
-  Confirm which prompt from the catalog I want (I'll reference by ID like W-01 or give a description).
+  Confirm which prompt I want (I'll reference by file name or give a description).
   Ask 1-2 clarifying questions ONLY if truly needed — do not over-ask.
 </step>
 
 <step number="2" name="Design">
   Design the prompt with these components:
   <component name="prompt_metadata">
-    Include: prompt ID, name, version, last updated, category
+    Include: file name, prompt name, version, last updated, category
   </component>
   <component name="role_definition">
     Define who Claude is acting as — be specific to the task domain.
-    Ground the role in TTD's developer platform context where relevant.
+    Ground the role in the developer platform context where relevant.
   </component>
   <component name="task_specification">
     Crystal clear description of what the prompt should accomplish.
@@ -188,7 +160,7 @@ When I ask you to create a prompt, follow this process:
     Include explicit output format (what Claude should produce).
   </component>
   <component name="constraints_and_guidelines">
-    Quality bars, anti-patterns to avoid, TTD-specific conventions.
+    Quality bars, anti-patterns to avoid, company-specific conventions.
     Include both positive examples (do this) and negative examples (not this).
   </component>
   <component name="output_structure">
@@ -210,7 +182,7 @@ When I ask you to create a prompt, follow this process:
 <quality_standards>
   <standard>Every prompt must produce output that is immediately usable — no fluff, no filler</standard>
   <standard>Prompts should be opinionated about best practices, not wishy-washy</standard>
-  <standard>Include TTD/adtech context where it sharpens the output — omit where generic is fine</standard>
+  <standard>Include domain-specific context where it sharpens the output — omit where generic is fine</standard>
   <standard>Prefer structured output (tables, tagged sections) over walls of prose</standard>
   <standard>Every prompt should handle edge cases gracefully with fallback instructions</standard>
   <standard>Prompts should encourage Claude to ask for missing critical inputs rather than guessing</standard>
@@ -251,7 +223,7 @@ and Notion.
   photography, continuous learning via YouTube
 
 ## How to Create a Prompt
-When I ask you to create a prompt (I'll reference an ID like P-01 or describe what I need):
+When I ask you to create a prompt (I'll describe what I need or reference the planned prompts list):
 
 ### 1. Confirm & Clarify
 - Confirm which prompt I want
@@ -262,7 +234,6 @@ When I ask you to create a prompt (I'll reference an ID like P-01 or describe wh
 **Header Block:**
 ```
 ---
-id: [prompt ID]
 name: [prompt name]
 version: v1.0
 category: [health | audio | photography | learning | creative]
@@ -308,37 +279,8 @@ last_updated: YYYY-MM-DD
 
 | What | Format | Stored In | AI Tool |
 |------|--------|-----------|---------|
-| Work prompts (W-01 to W-30) | XML | GitLab repo | Claude Projects |
-| Personal prompts (P-01 to P-22) | Markdown | GitHub / Obsidian | ChatGPT Projects |
-| Video transcripts | Markdown | Notion | Gemini |
-| Visual content prompts | Plain text | Obsidian | Grok |
+| Work prompts | XML | `prompts/claude/` in this repo | Claude Projects / Claude Code |
+| GPT prompts | Markdown | `prompts/gpt/` in this repo | ChatGPT |
+| Gemini prompts | Markdown | `prompts/gemini/` in this repo | Gemini |
+| Personal prompts (planned) | Markdown | TBD — `prompts/gpt/` or Obsidian | ChatGPT / Gemini / Grok |
 | Meeting/email analysis | Natural language | O365 | Copilot |
-| Dev scripts & automation | Code files | GitLab | Claude Code |
-
----
-
-## Getting Started — Recommended Build Order
-
-### Week 1: High-Impact Work Prompts
-1. **W-01** PRD Writer — you'll use this constantly
-2. **W-08** User Feedback Analyzer — immediate value from incoming signals
-3. **W-18** Codebase & Architecture Interrogator — accelerate your ramp
-4. **W-20** Domain Knowledge Accelerator — learn adtech/TTD faster
-5. **W-13** Stakeholder Update Writer — weekly visibility
-
-### Week 2: Workflow & Communication
-6. **W-02** PRD Reviewer — pair with W-01 for self-review
-7. **W-15** Meeting Prep Brief — win every meeting
-8. **W-26** Teams Meeting Summarizer — stop losing action items
-9. **W-07** RFC/Decision Doc Writer — drive decisions cleanly
-10. **W-22** "What I've Learned" Synthesis — compound your onboarding
-
-### Week 3: Personal Prompts
-11. **P-16** Video Transcript Cleaner — improve your learning pipeline
-12. **P-17** Video-to-Notion Knowledge Page — build your knowledge base
-13. **P-06** Gear Research & Comparison — for your next audio purchase
-14. **P-01** Health Research Synthesizer — family health decisions
-15. **P-20** Image Generation Brief — level up Grok outputs
-
-### Ongoing
-Build remaining prompts as needs arise. Version and iterate.

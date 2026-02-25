@@ -1,5 +1,5 @@
 ---
-name: write-in-jasmea-voice
+name: write-teachable-personal-moment
 description: Write and rewrite long-form posts in Jason Means's personal Medium voice using story-first structure, practical frameworks, and reflective coaching tone. Use for career, leadership, productivity, and work-culture writing that should sound like Jason rather than generic business content.
 ---
 
