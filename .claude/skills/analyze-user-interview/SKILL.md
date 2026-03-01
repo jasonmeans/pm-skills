@@ -1,13 +1,13 @@
 ---
 name: analyze-user-interview
-description: Analyze a Zoom user interview — merges a VTT transcript with Confluence interview notes to produce a complete research summary with themes, pain points, friction points, and product signals, formatted for Confluence or saved as a local markdown file.
+description: Analyze a Zoom user interview — merges a VTT transcript with PM interview notes (markdown) to produce a complete research summary saved as a local markdown file.
 ---
 
 # User Interview Analyzer
 
 You are acting as a hybrid expert — part senior UX researcher, part Product Manager — analyzing a completed user interview. These sessions typically involve one user (the interviewee), a PM (the interviewer), and one or two engineers as observers. Treat this like a rigorous research artifact: extract signal, not noise.
 
-Your job is to merge two required inputs (Zoom VTT transcript + Confluence interview notes) and an optional third (Zoom video recording) into a single, cohesive, well-structured research summary.
+Your job is to merge two required inputs (Zoom VTT transcript + PM interview notes markdown file) and an optional third (Zoom video recording) into a single, cohesive, well-structured research summary saved as a local markdown file.
 
 ---
 
@@ -18,29 +18,16 @@ Before doing anything, confirm which inputs are available. Ask for any missing r
 | # | Input | Required | Description |
 |---|-------|----------|-------------|
 | 1 | **Zoom VTT transcript** | Yes | Path to the `.vtt` file from the Zoom recording |
-| 2 | **Confluence interview notes** | Yes | URL or page ID of the Confluence page with the interview template and PM notes |
+| 2 | **PM interview notes** | Yes | Path to the markdown file with the interview template and PM notes |
 | 3 | **Zoom video recording link** | No | Zoom cloud recording URL |
 
-If the user has not provided both required inputs, ask for them before proceeding. Do not guess file paths. Also ask for the Zoom video link if not provided — it will be referenced on the final page.
+If the user has not provided both required inputs, ask for them before proceeding. Do not guess file paths. Also ask for the Zoom video link if not provided — it will be referenced in the output.
 
 ---
 
-## Step 1: Read the Confluence Interview Notes
+## Step 1: Read the PM Interview Notes
 
-Fetch the Confluence page using the REST API:
-
-```bash
-AUTH_HEADER=$(python3 -c "import base64, os; u=os.environ['ATLASSIAN_USER']; t=os.environ['ATLASSIAN_TOKEN']; print(base64.b64encode(f'{u}:{t}'.encode()).decode())")
-
-# If the user provided a page URL, extract the page ID from it
-# URL pattern: https://YOUR_DOMAIN.atlassian.net/wiki/spaces/SPACE/pages/PAGE_ID/...
-# Or search by title if they gave a title instead of URL
-
-curl -s -H "Authorization: Basic $AUTH_HEADER" -H "Accept: application/json" \
-  "https://YOUR_DOMAIN.atlassian.net/wiki/rest/api/content/PAGE_ID?expand=body.storage,body.view,version,space,ancestors" | jq .
-```
-
-Extract and understand:
+Read the markdown file using the Read tool. Extract and understand:
 
 - **Interview goals** — What the PM was trying to learn; what decisions this informs
 - **Interview structure** — What questions/tasks were in the template
@@ -50,7 +37,7 @@ Extract and understand:
 
 ### 1a. Identify Existing Template Fields
 
-Scan the existing page for these fields. They are typically at the top of the page or in the interview template:
+Scan the existing file for these fields. They are typically at the top:
 
 - Date
 - Interviewer (name, role)
@@ -113,7 +100,7 @@ After resolving all speaker names, produce a cleaned version of the transcript:
 
 ## Step 3: Handle Video Input (Optional)
 
-If a Zoom video link was provided, you will reference it on the page (see Step 6). If the user also provided a local video file path:
+If a Zoom video link was provided, you will reference it in the output. If the user also provided a local video file path:
 
 > Note: Direct video analysis is not available. However, the video is valuable for observing screen-sharing portions of usability studies.
 
@@ -133,7 +120,7 @@ Incorporate any visual observations the user provides as **Screen Observation** 
 
 ## Step 4: Analyze — Extract Signal
 
-Working from the merged transcript + Confluence notes + any video observations, run a full research analysis. Apply your expertise as both a UX researcher and a PM. Look for:
+Working from the merged transcript + PM notes + any video observations, run a full research analysis. Apply your expertise as both a UX researcher and a PM. Look for:
 
 ### Themes
 Group related comments, behaviors, and moments across the session into 3–7 coherent themes. A theme is a pattern that appeared more than once — either in words, hesitation, a repeated question, or a consistent behavior.
@@ -170,7 +157,7 @@ Before composing the AI summary, clean up the human-written "Interview Notes:" s
 - Fix spelling, grammar, and punctuation errors
 - Expand obvious abbreviations (e.g., "ff" -> "feature flags", "perf" -> "performance")
 - Lightly clarify half-finished thoughts where the intent is obvious from context — keep the original meaning intact
-- Remove trailing blank lines / empty paragraphs (`<p />`) after the last bullet in each Interview Notes section to keep the document compact
+- Remove trailing blank lines / empty paragraphs after the last bullet in each Interview Notes section to keep the document compact
 - Preserve the bullet structure and content — do not add, remove, or reorder bullets
 
 **Do NOT:**
@@ -183,7 +170,7 @@ Before composing the AI summary, clean up the human-written "Interview Notes:" s
 
 ## Step 5: Compose the Research Summary
 
-Produce a structured, well-formatted research summary. **Do NOT include an "Interview Summary" header with Date/Interviewer/Interviewee/Observers/Duration/Goals in the AI analysis.** That information belongs in the interview template fields at the top of the page and will be updated there directly (see Step 6). The AI analysis starts with the Executive Summary.
+Produce a structured, well-formatted research summary. **Do NOT include an "Interview Summary" header with Date/Interviewer/Interviewee/Observers/Duration/Goals in the AI analysis.** That information belongs in the metadata section at the top of the output file. The AI analysis starts with the Executive Summary.
 
 Use this structure for the AI analysis content:
 
@@ -280,227 +267,46 @@ Concrete actions for the PM, ranked by priority:
 
 ---
 
-## Step 6: Confirm Output Destination
+## Step 6: Save Output as Markdown
 
-**Before writing or modifying anything**, ask the user:
+Save the analysis to the user's Desktop:
 
-> "The analysis is ready. How would you like me to save it?
->
-> 1. **Save locally as markdown** — I'll save the summary to your Desktop as `interview-analysis-[product-slug]-[YYYY-MM-DD].md`.
-> 2. **Update the Confluence interview page** — I'll append the AI analysis and update the interview metadata directly on the linked Confluence page.
->
-> Which would you prefer?"
+```
+~/Desktop/interview-analysis-[interviewee-slug]-[YYYY-MM-DD].md
+```
 
-Wait for confirmation. Do not write to Confluence or disk without the user's explicit choice.
+The output file follows this structure:
+
+```markdown
+# Interview Analysis: [Interviewee Name] — [YYYY-MM-DD]
+
+## Interview Metadata
+
+| Field | Value |
+|-------|-------|
+| **Date** | [date] |
+| **Interviewer** | [name, role] |
+| **Interviewee** | [name, role, team, tenure if known] |
+| **Observers** | [names, roles] |
+| **Interview Type** | [Open interview / Usability study / Mixture] |
+| **Product / Area** | [product area] |
+| **Duration** | [duration] |
+| **Zoom Recording** | [URL or N/A] |
+| **Champion Candidate** | [Yes / No / Unknown] |
+| **Early Adopter Candidate** | [Yes / No / Unknown] |
+| **Follow-Up Needed** | [Yes / No — details] |
 
 ---
 
-## Step 7: Deliver Output
+## Original PM Interview Notes
 
-### Confluence Page Layout — MANDATORY STRUCTURE
-
-When writing to Confluence (whether updating or creating a copy), the page MUST follow this exact layout from top to bottom. This layout is **non-negotiable** and must be consistent across ALL interview pages produced by this skill.
-
-#### Section 1: Interview Participant Info (very top of page)
-
-These fields go at the **very top** of the page, above everything else. Check the existing interview template for these fields and update them directly. If any are missing, add them.
-
-**Do NOT include:**
-- The interviewee's name as a heading — the Confluence page title already contains it
-- Interview Goals — these are part of the interview template and belong in the Interview Notes section
-- Duration — this is captured in the Interview Metadata table at the bottom
-
-**Required fields** — render as a **single `<p>` block** with `<br />` between each line (no separate paragraphs, no blank lines). This keeps the section tight and compact:
-
-```xml
-<p><strong>Zoom Video Recording:</strong> <a href="[URL]">[URL]</a><br />
-<strong>Date:</strong> [date]<br />
-<strong>Interviewer:</strong> <ac:link><ri:user ri:account-id="[ACCOUNT_ID]" /></ac:link>, [role]<br />
-<strong>Interviewee:</strong> <ac:link><ri:user ri:account-id="[ACCOUNT_ID]" /></ac:link>, [role, team, tenure if known]<br />
-<strong>Observers:</strong> <ac:link><ri:user ri:account-id="[ACCOUNT_ID]" /></ac:link> ([role]) &middot; <ac:link><ri:user ri:account-id="[ACCOUNT_ID]" /></ac:link> ([role])<br />
-<strong>Interview Type:</strong> [Open interview / Usability study / Mixture]<br />
-<strong>Product / Repo:</strong> [product area]<br />
-<strong>Relevant Context:</strong> [context]</p>
-```
-
-**@ mentioning people:** For every person referenced (interviewer, interviewee, observers), attempt to tag them using the Confluence `<ac:link><ri:user ri:account-id="..." /></ac:link>` markup. To find account IDs, search the Atlassian user directory:
-
-```bash
-AUTH_HEADER=$(python3 -c "import base64, os; u=os.environ['ATLASSIAN_USER']; t=os.environ['ATLASSIAN_TOKEN']; print(base64.b64encode(f'{u}:{t}'.encode()).decode())")
-
-# Search for a user by name
-curl -s -H "Authorization: Basic $AUTH_HEADER" -H "Accept: application/json" \
-  "https://YOUR_DOMAIN.atlassian.net/wiki/rest/api/search/user?cql=type=user%20AND%20user.fullname~%22[NAME]%22" | jq '.results[] | {accountId, displayName: .user.displayName}'
-```
-
-If the existing page already contains `<ri:user ri:account-id="...">` tags for any participants, reuse those account IDs. If a user cannot be found, fall back to plain text for that name.
-
-Do NOT duplicate these in the AI analysis section. If the template already has these fields, update them with data from the transcript. If a field is missing (e.g., "Interview Type" is not in the template), add it.
-
-#### Section 2: Interview Notes Callout Box
-
-Wrap the human interview notes in a Confluence panel with these exact colors:
-
-```xml
-<ac:structured-macro ac:name="panel" ac:schema-version="1" data-layout="default">
-  <ac:parameter ac:name="borderColor">#00875A</ac:parameter>
-  <ac:parameter ac:name="titleColor">#FFFFFF</ac:parameter>
-  <ac:parameter ac:name="borderWidth">2</ac:parameter>
-  <ac:parameter ac:name="titleBGColor">#00875A</ac:parameter>
-  <ac:parameter ac:name="title">Interview Notes</ac:parameter>
-  <ac:rich-text-body>
-    <p>These are the original interview notes captured by the interviewer during the session. They include the interview template questions, real-time observations, and post-interview reflections.</p>
-  </ac:rich-text-body>
-</ac:structured-macro>
-```
-
-**Color: Green (#00875A)** — This callout introduces the human-written interview notes section.
-
-The human interview notes content follows immediately after this callout. This includes:
-- Interview Goals
-- Warm-Up section
-- General Feedback section
-- Core Questions (all sub-questions)
-- Magic Wand section
-- Wrap-Up section
-- Post-Interview Notes table
-
-#### Section 3: AI Interview Analysis Callout Box
-
-After all human interview notes, add the AI analysis section wrapped in its own callout:
-
-```xml
-<ac:structured-macro ac:name="panel" ac:schema-version="1" data-layout="default">
-  <ac:parameter ac:name="borderColor">#0052CC</ac:parameter>
-  <ac:parameter ac:name="titleColor">#FFFFFF</ac:parameter>
-  <ac:parameter ac:name="borderWidth">2</ac:parameter>
-  <ac:parameter ac:name="titleBGColor">#0052CC</ac:parameter>
-  <ac:parameter ac:name="title">AI Interview Analysis &mdash; Generated [YYYY-MM-DD]</ac:parameter>
-  <ac:rich-text-body>
-    <p>This analysis was generated by the <strong>analyze-user-interview</strong> skill, merging the Zoom VTT transcript with the PM interview notes above. See the Interview Notes section above for the original template and observations.</p>
-  </ac:rich-text-body>
-</ac:structured-macro>
-```
-
-**Color: Blue (#0052CC)** — This callout introduces the AI-generated analysis section.
-
-The AI analysis content follows immediately after this callout:
-- Executive Summary
-- Key Themes (with sub-theme headings)
-- Pain Points (table)
-- Friction Points (table)
-- Frustrations (verbatim quotes)
-- What's Working (verbatim quotes)
-- Product Signals (table)
-- Notable Quotes
-- Transcript Coverage Notes
-- Recommended Next Steps
-
-#### Section 4: Interview Metadata Table (very bottom)
-
-The Interview Metadata table goes at the **very bottom** of the page, below everything else. This is the enriched reference table with all metadata about the interview.
-
-```xml
-<h2>Interview Metadata</h2>
-<table data-table-width="1800" data-layout="default">
-  <tbody>
-    <tr><th>Field</th><th>Value</th></tr>
-    <tr><td><strong>Interviewee</strong></td><td>[Name]</td></tr>
-    <tr><td><strong>Role / Title</strong></td><td>[Role]</td></tr>
-    <tr><td><strong>Team</strong></td><td>[Team name]</td></tr>
-    <tr><td><strong>Tenure</strong></td><td>[If known]</td></tr>
-    <tr><td><strong>Geographic Location</strong></td><td>[If known]</td></tr>
-    <tr><td><strong>Products They Work On</strong></td><td>[Products mentioned in interview]</td></tr>
-    <tr><td><strong>Repos They Work Out Of</strong></td><td>[If mentioned]</td></tr>
-    <tr><td><strong>Interviewer</strong></td><td>[Name, role]</td></tr>
-    <tr><td><strong>Observers</strong></td><td>[Names, roles]</td></tr>
-    <tr><td><strong>Interview Date</strong></td><td>[Date]</td></tr>
-    <tr><td><strong>Interview Type</strong></td><td>[Type]</td></tr>
-    <tr><td><strong>Duration</strong></td><td>[Duration]</td></tr>
-    <tr><td><strong>Zoom Video Recording</strong></td><td><a href="[ZOOM_URL]">[ZOOM_URL]</a></td></tr>
-    <tr><td><strong>Champion Candidate</strong></td><td>[Yes/No/Unknown]</td></tr>
-    <tr><td><strong>Early Adopter Candidate</strong></td><td>[Yes/No/Unknown]</td></tr>
-    <tr><td><strong>Follow-Up Needed</strong></td><td>[Yes/No — details]</td></tr>
-  </tbody>
-</table>
-```
-
-Fill in every field you can from the transcript and interview notes. If a field was already populated in the existing Post-Interview Notes table, preserve that value. If you discovered additional information from the transcript (e.g., products they mentioned working on, repos referenced), add it. Leave fields blank only if truly unknown.
-
-### Callout Box Summary
-
-| Callout | Color | Hex | Position |
-|---------|-------|-----|----------|
-| **Interview Notes** | Green | `#00875A` border + title BG, `#FFFFFF` title text | After participant info, before AI analysis |
-| **AI Interview Analysis** | Blue | `#0052CC` border + title BG, `#FFFFFF` title text | After interview notes, before metadata table |
-
-These colors and positions must be identical on every interview page. No exceptions.
+[Cleaned-up version of the PM's notes from the markdown input file, preserving structure]
 
 ---
 
-### If writing to Confluence (update existing page)
+## AI Interview Analysis — Generated [YYYY-MM-DD]
 
-Read the current page version first, then update:
-
-```bash
-AUTH_HEADER=$(python3 -c "import base64, os; u=os.environ['ATLASSIAN_USER']; t=os.environ['ATLASSIAN_TOKEN']; print(base64.b64encode(f'{u}:{t}'.encode()).decode())")
-
-# Get current version number
-VERSION=$(curl -s -H "Authorization: Basic $AUTH_HEADER" -H "Accept: application/json" \
-  "https://YOUR_DOMAIN.atlassian.net/wiki/rest/api/content/PAGE_ID?expand=version" | jq '.version.number')
-
-# Update the page (increment version)
-curl -s -H "Authorization: Basic $AUTH_HEADER" \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -X PUT \
-  -d '{
-    "version": {"number": '$((VERSION + 1))'},
-    "title": "PAGE_TITLE",
-    "type": "page",
-    "body": {
-      "storage": {
-        "value": "[FULL_PAGE_XHTML]",
-        "representation": "storage"
-      }
-    }
-  }' \
-  "https://YOUR_DOMAIN.atlassian.net/wiki/rest/api/content/PAGE_ID" | jq '._links.webui'
-```
-
-### If creating a copy (sibling page)
-
-```bash
-AUTH_HEADER=$(python3 -c "import base64, os; u=os.environ['ATLASSIAN_USER']; t=os.environ['ATLASSIAN_TOKEN']; print(base64.b64encode(f'{u}:{t}'.encode()).decode())")
-
-# Create sibling page under the same parent
-curl -s -H "Authorization: Basic $AUTH_HEADER" \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -X POST \
-  -d '{
-    "type": "page",
-    "title": "[Interviewee Name] - [Interview Topic] (AI Enhanced)",
-    "space": {"key": "SPACE_KEY"},
-    "ancestors": [{"id": "PARENT_PAGE_ID"}],
-    "body": {
-      "storage": {
-        "value": "[FULL_PAGE_XHTML]",
-        "representation": "storage"
-      }
-    }
-  }' \
-  "https://YOUR_DOMAIN.atlassian.net/wiki/rest/api/content" | jq '.id, ._links.webui'
-```
-
-Return the page URL so the user can view it immediately.
-
-### If saving locally
-
-Save the markdown file to the user's Desktop:
-
-```
-~/Desktop/interview-analysis-[product-slug]-[YYYY-MM-DD].md
+[Executive Summary through Recommended Next Steps as composed in Step 5]
 ```
 
 Confirm the file path after writing.
@@ -525,7 +331,7 @@ These rules apply throughout the analysis. Never violate them.
 - Generate themes from a single data point. One quote is a data point; a pattern across multiple moments is a theme.
 - Omit positive findings to appear more analytical. A balanced report builds more PM credibility.
 - Write for the user who was in the room. Write for the stakeholder who wasn't there.
-- Include an "Interview Summary" section with Date/Interviewer/Interviewee/etc. in the AI analysis — that information belongs in the template fields at the top of the page.
+- Include an "Interview Summary" section with Date/Interviewer/Interviewee/etc. in the AI analysis — that information belongs in the metadata table at the top.
 
 ---
 

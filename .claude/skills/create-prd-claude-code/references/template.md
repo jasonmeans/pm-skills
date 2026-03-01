@@ -9,7 +9,7 @@
 | **Status** | Draft / Ready for Build |
 | **Target Repo** | [repo path or URL] |
 | **Language/Framework** | [e.g., TypeScript / Express.js / PostgreSQL] |
-| **Jira Epic** | [PROJ-XXX] |
+| **Design Doc** | [path/to/doc.md or N/A] |
 
 ---
 
