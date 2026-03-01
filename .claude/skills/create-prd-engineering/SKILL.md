@@ -34,7 +34,7 @@ Ask the user for:
 7. **Dependencies** -- Other teams, services, or features this depends on
 8. **Release plan** -- What stages (Alpha, Beta, GA) and what are the criteria to advance?
 
-If the user provides a Jira epic, Confluence page, or design doc, read it for context.
+If the user provides a design doc or markdown spec, read it for context.
 
 ## Outputs
 
@@ -55,7 +55,7 @@ A comprehensive engineering PRD in markdown, following the template in `referenc
 
 ## Steps
 
-1. **Gather context** -- Ask for the inputs above. If a Jira epic or design doc exists, read it.
+1. **Gather context** -- Ask for the inputs above. If a design doc or markdown spec exists, read it.
 2. **Write the problem statement** -- Cover both user pain and business impact. Engineers build better when they understand why something matters.
 3. **Define functional requirements** -- Organize by feature area. Each requirement should describe a behavior: "When X happens, the system does Y." Avoid vague requirements like "the system should be fast."
 4. **Document technical constraints** -- Performance targets, backwards compatibility, security requirements, rate limits, data retention policies. Be specific.
@@ -73,7 +73,7 @@ A comprehensive engineering PRD in markdown, following the template in `referenc
 
 **Agent:** Asks about the event system architecture, expected event types, delivery guarantees, retry logic, and auth model. Produces a full engineering PRD with data model for webhook registrations, API contracts for CRUD + delivery, edge cases for failed deliveries, and acceptance criteria.
 
-**User:** "Write an engineering PRD for migrating from REST to GraphQL for our dashboard API. Here's the Confluence design doc."
+**User:** "Write an engineering PRD for migrating from REST to GraphQL for our dashboard API. Here's the design doc: docs/graphql-migration.md."
 
 **Agent:** Reads the design doc, maps the existing REST endpoints, and produces a PRD with the GraphQL schema, migration plan per endpoint, backwards compatibility approach, and release stages.
 

@@ -90,7 +90,7 @@ Ask these questions:
 - Who is mentioned as a user, stakeholder, or audience in design docs, PRDs, and strategy docs?
 - Who appears in the RBAC/permissions model? Different permission levels often indicate different personas
 - Who is mentioned in onboarding guides? Are there different guides for different roles?
-- Who files bugs, requests features, or gives feedback in Slack/Jira?
+- Who files bugs, requests features, or gives feedback in Slack or issue trackers?
 
 **From the codebase:**
 - What authentication roles exist? (admin, developer, viewer, integrations)

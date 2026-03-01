@@ -6,7 +6,6 @@
 | **Date** | [YYYY-MM-DD] |
 | **Status** | Draft / In Review / Approved |
 | **Stakeholders** | [PM, Eng Lead, Design Lead, TPM, etc.] |
-| **Jira Epic** | [PROJ-XXX] |
 | **Target Release** | [Alpha / Closed Beta / Open Beta / GA] |
 
 ---

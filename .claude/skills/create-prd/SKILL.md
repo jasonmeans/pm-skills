@@ -28,7 +28,7 @@ Ask the user for:
 2. **Problem statement** -- What problem does this solve? Who has this problem?
 3. **Goals** -- What does success look like? What are we NOT trying to do?
 4. **Target users** -- Who are the primary users? Any secondary audiences?
-5. **Context** -- Any existing docs, Jira epics, Confluence pages, design files, or prior art?
+5. **Context** -- Any existing docs, design files, prior art, or markdown specs?
 6. **Constraints** -- Timeline, technical limitations, dependencies, or organizational constraints?
 
 If the user provides partial input, fill in what you can and mark gaps with `[TBD]` placeholders.
@@ -50,7 +50,7 @@ A complete PRD in markdown, following the template in `references/template.md`. 
 
 ## Steps
 
-1. **Gather inputs** -- Ask the user for the inputs listed above. If they provide a Jira epic or Confluence page, read it for context.
+1. **Gather inputs** -- Ask the user for the inputs listed above. If they provide a design doc or markdown file, read it for context.
 2. **Draft the problem statement** -- Write a clear, specific problem statement. Avoid jargon. Focus on the user's pain, not the solution.
 3. **Define goals and non-goals** -- Goals should be measurable. Non-goals are just as important -- they set boundaries and prevent scope creep.
 4. **Write user stories** -- Use "As a [user], I want to [action], so that [outcome]" format. Cover the primary persona first, then secondary.
@@ -66,11 +66,11 @@ A complete PRD in markdown, following the template in `references/template.md`. 
 
 **User:** "I need a PRD for a new notification preferences feature. Users have been complaining they get too many emails and can't control which ones they receive."
 
-**Agent:** Asks clarifying questions about target users, current notification types, any existing designs or Jira epics, and timeline constraints. Then produces a full PRD using the template.
+**Agent:** Asks clarifying questions about target users, current notification types, any existing designs or docs, and timeline constraints. Then produces a full PRD using the template.
 
-**User:** "Write a PRD for adding SAML SSO support. Here's the Jira epic: PROJ-456."
+**User:** "Write a PRD for adding SAML SSO support. Here's the design doc: docs/saml-sso.md."
 
-**Agent:** Reads the Jira epic for context, then produces a PRD that references the epic and fills in product context around the technical work.
+**Agent:** Reads the design doc for context, then produces a PRD that fills in product context around the technical work.
 
 ## Guardrails
 

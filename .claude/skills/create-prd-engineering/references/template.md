@@ -8,7 +8,6 @@
 | **TPM** | [Name] |
 | **Date** | [YYYY-MM-DD] |
 | **Status** | Draft / Eng Review / Approved / In Progress |
-| **Jira Epic** | [PROJ-XXX] |
 | **Design Spec** | [Link] |
 | **Architecture Doc** | [Link, if applicable] |
 
@@ -183,8 +182,6 @@ ALTER TABLE [existing_table]
 - **Given** [precondition], **When** [action], **Then** [expected result]
 - **Given** [error condition], **When** [action], **Then** [error handling behavior]
 
-**Jira:** [PROJ-XXX or "To be created"]
-
 ---
 
 ### Story 2: [Story title]
@@ -195,8 +192,6 @@ ALTER TABLE [existing_table]
 
 - **Given** [precondition], **When** [action], **Then** [expected result]
 - **Given** [precondition], **When** [action], **Then** [expected result]
-
-**Jira:** [PROJ-XXX or "To be created"]
 
 ---
 
