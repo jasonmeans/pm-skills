@@ -1,6 +1,6 @@
 ---
 name: create-prd
-description: Generate a standard PRD covering problem statement, goals, user stories, success metrics, technical considerations, milestones, and risks. Use when you need a cross-functional product requirements document that works for engineering, design, and leadership audiences.
+description: Write a complete Product Requirements Document (PRD) for a feature, product area, or initiative. Trigger this skill whenever someone asks to write a PRD, requirements doc, spec, or product brief — or says things like "I need to document this feature," "help me write up what we're building before sprint planning," or "my VP wants a spec for this project." This is the default PRD format covering problem statement, goals, user stories, success metrics, technical considerations, milestones, and risks — designed to align engineering, design, TPM, and leadership. Do NOT trigger for: one-pagers for exec approval (use create-prd-one-pager), specs optimized for AI coding agents (use create-prd-claude-code), deep engineering specs with API contracts (use create-prd-engineering), or build-vs-buy decisions (use decision-brief).
 ---
 
 # Create PRD (Standard)
