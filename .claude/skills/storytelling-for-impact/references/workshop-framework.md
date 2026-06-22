@@ -1,6 +1,6 @@
 # Storytelling for Impact — Full Workshop Framework
 
-This reference document contains the complete workshop framework from Jason's "Storytelling for Impact" workshop, including all exercises, evaluation criteria, and delivery coaching.
+This reference document contains the complete Storytelling for Impact workshop framework, including all exercises, evaluation criteria, and delivery coaching.
 
 ## Why Story?
 

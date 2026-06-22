@@ -1,4 +1,4 @@
-# Decision Brief: Vendor Selection for Monterey Retail Site
+# Decision Briefing: Vendor Selection for Monterey Retail Site
 
 ## Introduction
 
@@ -14,11 +14,9 @@ Good morning. The purpose of my briefing today is to obtain a decision from you 
 
 ## Options
 
-| Option | Description |
-|--------|-------------|
-| **Option A: VendorAlpha Pro** | Cloud-based inspection platform with AI-assisted defect detection. 3-year contract. |
-| **Option B: VendorBeta Standard** | On-premise inspection system with manual calibration. 1-year renewable license. |
-| **Option C: Status Quo** | Continue using the existing legacy inspection system at the new site. |
+- **VendorAlpha Pro** - Cloud-based inspection platform with AI-assisted defect detection. 3-year contract.
+- **VendorBeta Standard** - On-premise inspection system with manual calibration. 1-year renewable license.
+- **Status Quo** - Continue using the existing legacy inspection system at the new site.
 
 ## Comparison
 
@@ -32,13 +30,11 @@ Good morning. The purpose of my briefing today is to obtain a decision from you 
 
 ### Comparison Table
 
-| Criteria | VendorAlpha Pro | VendorBeta Standard | Status Quo |
-|----------|----------------|--------------------:|------------|
-| **Cost (3-yr TCO)** | $420K | $285K | $90K (maintenance only) |
-| **Defect Detection** | 99.97% accuracy | 99.8% accuracy | 97% accuracy |
-| **Implementation** | 10 weeks | 6 weeks | No change needed |
-| **Vendor Support** | 24/7 SLA, on-site training included | Business hours SLA, training extra ($15K) | No vendor support, internal only |
-| **Scalability** | Add sites via license, no new hardware | Requires new hardware per site ($80K each) | Not viable at scale |
+| Option | Cost (3-yr TCO) | Defect Detection | Implementation | Vendor Support | Scalability |
+|--------|----------------|-----------------|----------------|----------------|-------------|
+| **VendorAlpha Pro** | $420K | 99.97% accuracy | 10 weeks | 24/7 SLA, on-site training included | License-only expansion, no new hardware |
+| **VendorBeta Standard** | $285K | 99.8% accuracy | 6 weeks | Business hours SLA, training extra ($15K) | New hardware required per site ($80K each) |
+| **Status Quo** | $90K (maintenance only) | 97% accuracy | No change needed | No vendor support, internal only | Not viable at scale |
 
 ### Time and Risk Considerations
 

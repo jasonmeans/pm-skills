@@ -1,11 +1,21 @@
 ---
 name: decision-brief
-description: Help users prepare and deliver decision briefings using the SOCRR framework. Use when someone needs a decision from their boss or executives, is preparing a recommendation for leadership, wants to structure options and criteria for a decision, or needs to present a clear ask to decision-makers.
+description: Help users prepare and deliver decision briefings using the SOCRR framework. Use when someone needs a decision from a manager, executive, sponsor, or stakeholder group.
 ---
 
-# Decision Brief (SOCRR Framework)
+# Decision Briefing (SOCRR Framework)
 
 Help the user prepare and deliver a decision briefing that maximizes their chances of getting a decision, using the Career Tools SOCRR model.
+
+## Reasoning Framework
+
+This skill exists because decisions stall when the ask is unclear. SOCRR ensures the decision-maker receives a complete, structured brief with neutral options, explicit criteria, and a clear request — reducing back-and-forth.
+
+## Output Contract
+
+| Artifact | Format | Handed to |
+|----------|--------|-----------|
+| Decision briefing | Markdown (5 SOCRR sections) | Decision-maker / executive |
 
 ## The Core Problem
 
@@ -37,6 +47,7 @@ Lay out the facts and basic parameters surrounding the decision. Focus on the cu
 Describe the options being considered. List them neutrally with a brief overview of each.
 
 **Key rules:**
+- Format each option as a bullet point, not a table row. Keep each bullet tight: option name in bold, followed by a brief one-sentence description
 - Do not describe pluses and minuses yet -- that belongs in comparison
 - Do not share criteria or analysis yet
 - Stay neutral. Do not signal which option you favor
@@ -54,7 +65,7 @@ First detail the criteria you will use, then compare each option against those c
 - Two valid approaches for structuring criteria:
   - **Detailed criteria up front:** Define each criterion with its measurement standards, then use rankings in the comparison cells
   - **Broad criteria labels:** Use short criterion names, then list specific factors for each option in the comparison cells
-- Use a comparison table: options as columns, criteria as rows
+- Use a comparison table: options as rows, criteria as columns
 - Cover every option against every criterion. Do not skimp on any option, even the weakest one
 - Never put your thumb on the scales. If you are seen to manipulate the comparison to favor your recommendation, you will lose credibility and trust permanently. Your professional obligation is to drive a good decision for the organization, not to win
 
@@ -68,7 +79,7 @@ This step is one or two sentences. The recommendation stands on the foundation y
 
 ### R — Request
 
-Ask for the decision. This is what separates a decision brief from an information brief.
+Ask for the decision. This is what separates a decision briefing from an information briefing.
 
 **Template:** "I've recommended [option]. What's your decision?"
 
@@ -89,7 +100,7 @@ These do not have to be separate criteria, but you must think through them and b
 
 ## Use SOCRR Always -- Longer or Shorter
 
-The question is never "is this decision important enough to use SOCRR?" The question is "how long or short should this decision brief be?"
+The question is never "is this decision important enough to use SOCRR?" The question is "how long or short should this decision briefing be?"
 
 - A $1,000 copier decision might be three slides
 - A $50 million expansion decision might be thirty slides
@@ -98,7 +109,7 @@ The question is never "is this decision important enough to use SOCRR?" The ques
 
 ## Pre-Wiring Is Non-Negotiable
 
-Effective decision briefs are virtually always pre-wired. Before the meeting:
+Effective decision briefings are virtually always pre-wired. Before the meeting:
 
 - Take a draft of your proposal to each stakeholder individually
 - Walk them through the process and show them the slides
@@ -111,18 +122,22 @@ Effective decision briefs are virtually always pre-wired. Before the meeting:
 
 ## How to Help Users
 
-When the user asks for help with a decision brief:
+When the user asks for help with a decision briefing:
 
 1. **Clarify the decision** -- What specific decision do they need? Who is the decision-maker?
 2. **Draft the introduction** -- Help them state the purpose with "decision" in the first 10 words
 3. **Build the situation** -- Pull out the key facts. Flag if they are slipping into chronology or drama
-4. **List the options** -- Ensure they include status quo. Flag if they are mixing in pluses/minuses or criteria
+4. **List the options** -- Ensure they include status quo. Flag if they are mixing in pluses/minuses or criteria. Format as bullet points, not a table
 5. **Define criteria** -- Help them choose criteria that are fair, complete, and clearly defined. Flag vague criteria that need sub-factors
-6. **Build the comparison table** -- Create a matrix of options vs. criteria. Use short descriptive text in each cell, not emojis or symbols that lose context
+6. **Build the comparison table** -- Create a matrix with options as rows and criteria as columns. Use short descriptive text in each cell, not emojis or symbols that lose context
 7. **State the recommendation** -- Keep it to one or two sentences grounded in the comparison
 8. **Write the request** -- Draft the closing ask
 9. **Check time and risk** -- Review each option for timing implications and unique risks
 10. **Plan pre-wiring** -- Identify stakeholders and plan individual walk-throughs before the meeting
+
+**Document formatting rules:**
+- Do NOT include a top-level summary section. Start the document directly with the Introduction
+- Everything before the comparison table (Introduction + Situation + Options) must not exceed 500 words combined
 
 ## Questions to Help Users
 
@@ -147,7 +162,7 @@ When the user asks for help with a decision brief:
 - **Putting your thumb on the scales** -- Manipulating criteria or weighting to favor your recommendation destroys credibility permanently
 - **Re-doing the comparison in the recommendation** -- The recommendation is one or two sentences. The comparison already did the work
 - **Not asking for the decision** -- If you do not request a decision, you will not get one. The entire briefing was for this moment
-- **Skipping pre-wiring** -- Walking into a decision meeting without having individually briefed stakeholders is the most common reason decision briefs fail
+- **Skipping pre-wiring** -- Walking into a decision meeting without having individually briefed stakeholders is the most common reason decision briefings fail
 
 ## Related Skills
 

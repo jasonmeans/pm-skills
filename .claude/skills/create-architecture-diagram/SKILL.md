@@ -1,11 +1,22 @@
 ---
 name: create-architecture-diagram
-description: Help users create three-tier architecture diagrams using Mermaid. Use when someone wants to visualize a system's architecture, document how services connect, map out a codebase's structure, or create presentation-ready diagrams of their tech stack. Works from codebases, design docs, or verbal descriptions.
+description: Help users document system architecture with Mermaid diagrams; produces overview, tier deep-dives, data flows, and a component summary table.
 ---
 
 # Architecture Diagrams (Mermaid)
 
 Help the user create clear, layered architecture diagrams using Mermaid syntax. The goal is to turn a codebase, design doc, or verbal description into a set of diagrams that tell the full story of a system's architecture.
+
+## Reasoning Framework
+
+This skill exists because architecture documentation is often outdated or nonexistent. It produces a consistent set of progressive-detail diagrams that can be embedded in product docs, technical specs, PRDs, or README files.
+
+## Output Contract
+
+| Artifact | Format | Handed to |
+|----------|--------|-----------|
+| 5 architecture diagrams | Mermaid code blocks | Product docs / technical specs / PRDs |
+| Component summary table | Markdown table | Technical reviewers |
 
 ## How to Help
 

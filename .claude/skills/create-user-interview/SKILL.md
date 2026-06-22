@@ -1,11 +1,21 @@
 ---
 name: create-user-interview
-description: Create minimalist user interview templates based on product context, goals, and interview type. Gathers inputs, applies PM best practices (The Mom Test, non-leading questions, past-focus), and saves a ready-to-use markdown template to the user's Desktop.
+description: Invoke when planning a user interview; produces a best-practice template (Open, Usability, or Mixture) with Mom Test-aligned questions.
 ---
 
 # User Interview Template Generator
 
-Create a minimalist, best-practice interview template that a PM can print or open on their laptop during a live user interview. The output is a single markdown file saved to the user's Desktop.
+Create a minimalist, best-practice interview template that a PM can print or open on their laptop during a live user interview. The output is a single markdown file saved to `outputs/interview-templates/`.
+
+## Reasoning Framework
+
+This skill exists because interview quality depends on question quality. It applies PM best practices (The Mom Test, non-leading questions, past-focus) to generate templates that surface real user behavior, not aspirational answers.
+
+## Output Contract
+
+| Artifact | Format | Handed to |
+|----------|--------|-----------|
+| Interview template | Markdown (goals, warm-up, core questions, wrap-up, notes section) | Interviewer / PM |
 
 ## How to Help
 
@@ -205,10 +215,10 @@ and "[SHOW PROTOTYPE / SCREEN]" placeholder]
 ## Output
 
 1. Generate the filled-in template following the structure above
-2. Save the file to the user's Desktop as: `interview-template-[product-name-slug]-[YYYY-MM-DD].md`
+2. Save the file to `outputs/interview-templates/interview-template-[product-name-slug]-[YYYY-MM-DD].md` from the repo root (creates the subfolder if missing)
 3. Show the user the completed template and explain any question rewrites made during the quality review
 
-The Desktop path is: `~/Desktop/`
+Do not save generated templates to `~/Desktop/`. Keep generated artifacts under `outputs/` so they are easy to find and can be ignored or committed intentionally.
 
 ## Common Mistakes to Flag
 
@@ -223,4 +233,4 @@ The Desktop path is: `~/Desktop/`
 
 - `/jobs-to-be-done` -- Create personas and use cases from interview findings
 - `/storytelling-for-impact` -- Turn interview insights into compelling stakeholder narratives
-- `/create-prd` -- Feed interview learnings into product requirements
+- `/create-prd-engineering` -- Feed interview learnings into product requirements

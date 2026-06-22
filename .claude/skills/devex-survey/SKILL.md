@@ -1,6 +1,6 @@
 ---
 name: devex-survey
-description: Create, distribute, and analyze Developer Experience surveys using HaTS principles and metadata-driven segmentation
+description: Create or analyze Developer Experience surveys. Creation mode outputs a 9-question HaTS-aligned survey; Analysis mode outputs sentiment metrics with theme clustering.
 ---
 
 # DevEx Survey
@@ -13,6 +13,19 @@ This skill defines how AI assists with Developer Experience surveys in two modes
 Both modes enforce strict constraints on question design, statistical reporting, and guardrails against misuse.
 
 See `references/runbook.md` for the full operational playbook covering distribution, cadence, and communication strategy.
+
+---
+
+## Reasoning Framework
+
+This skill exists because developer experience measurement requires survey science rigor (HaTS alignment, Likert scales, longitudinal consistency). Ad-hoc surveys produce unreliable data that can't be compared across quarters.
+
+## Output Contract
+
+| Artifact | Format | Handed to |
+|----------|--------|-----------|
+| Survey (Creation mode) | 9-question survey with scales and rationale | Survey platform / PM |
+| Analysis report (Analysis mode) | Markdown with sentiment metrics, themes, leverage opportunities | PM / leadership |
 
 ---
 
@@ -34,16 +47,17 @@ Generate a quarterly Developer Experience survey that:
 
 - Measures workflow sentiment across key developer touchpoints
 - Preserves longitudinal integrity (core questions stable quarter-over-quarter)
-- Aligns to HaTS (Happiness and Tracking Survey) principles — Google's validated approach to tracking developer happiness over time
+- Aligns to HaTS (Happiness and Tracking Survey) principles found on https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43221.pdf
 - Remains statistically credible with proper confidence intervals
 - Minimizes survey fatigue (3-5 minute completion)
 - Supports metadata-based post-processing (non-anonymous)
 
 ## Research Alignment
 
-Incorporate principles from **HaTS (Happiness and Tracking Survey)** — Google's validated approach to tracking developer happiness over time. Key principles: tie to workflows, use consistent scales, keep surveys short, track longitudinally.
+Incorporate principles from:
 
-- https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/43221.pdf
+- **HaTS (Happiness and Tracking Survey)** — Google's validated approach to tracking developer happiness over time. Key principles: tie to workflows, use consistent scales, keep surveys short, track longitudinally.
+- **JetBrains Developer Ecosystem Report** — Industry benchmark for developer workflow patterns, tool usage, and ecosystem trends.
 
 ## Survey Constraints (MANDATORY)
 

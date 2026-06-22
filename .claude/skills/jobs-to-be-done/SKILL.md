@@ -1,251 +1,168 @@
 ---
 name: jobs-to-be-done
-description: Help users create personas and end-to-end use case scenarios using the Jobs to Be Done (JTBD) framework. Use when someone needs to understand who their users are, document what those users are trying to accomplish, map out end-to-end workflows, or build a shared understanding of primary use cases for a product or platform.
+description: Help users define user needs with personas, a use case table (Outcome / How Today / Future / North Star), and open questions.
 ---
 
-# JTBD Personas & Use Cases
+# JTBD Personas & User Journeys
 
-Help the user create a comprehensive personas and use cases document using the Jobs to Be Done framework. The output is a single markdown file that gives any reader a clear understanding of who uses the product, what they're trying to accomplish, and how the product helps them do it.
+Help the user create a practical personas and user journeys document. The output is a shareable markdown page that gives any reader a clear picture of who uses the product, what outcomes they need, how they get those outcomes today, and where the product should go next.
+
+## Reasoning Framework
+
+Feature lists don't convey user intent. This skill produces a structured document that maps personas to outcomes, surfaces the current-state friction, and leaves space for the team to define the future and north star. It's designed to be a living artifact that drives roadmap conversations.
+
+## Output Contract
+
+| Artifact | Format | Handed to |
+|----------|--------|-----------|
+| JTBD document | Markdown | PM / design team / engineering leads |
 
 ## How to Help
 
-When the user asks for personas and use cases:
+When the user asks for personas and user journeys:
 
-1. **Understand the product** -- Read available documentation, code, design docs, or ask the user to describe the system
-2. **Identify the personas** -- Who are the distinct user types? What are their roles, tools, needs, and pain points?
-3. **Map the use cases** -- What are the major things the product does? Group them into product areas
-4. **Write JTBD statements** -- For each use case, write a "When / I want to / So that" statement grounded in motivation
-5. **Connect personas to jobs** -- Show which personas are involved in each job and how
-6. **Add context** -- Scale metrics, competitive landscape, and source references
-
-## The JTBD Framework
-
-### Core Principle
-
-People don't buy products -- they hire them to do a job. The "job" is the progress a person is trying to make in a particular circumstance. Focus on the job, not the feature.
-
-### The JTBD Statement Format
-
-```
-When [situation/trigger],
-I want to [action/capability],
-So that [desired outcome/progress].
-```
-
-**Rules for good JTBD statements:**
-- **Situation-first** -- Start with the circumstance that creates the need, not the feature
-- **Solution-agnostic action** -- Describe what the user wants to accomplish, not how the product implements it
-- **Outcome over output** -- The "so that" should be a business or personal outcome, not a product behavior
-- **One job per statement** -- Don't combine multiple jobs. If you need "and" in the action, it's probably two jobs
-
-**Good example:**
-> When I am deploying new code to production, I want to gate the new functionality so only specific users see it, so that I can deploy safely without risking all users if something goes wrong.
-
-**Bad example:**
-> When I click the feature flag button, I want to create a boolean flag with targeting rules, so that the flag is created in the system.
-
-The bad example describes product mechanics, not the job. The user doesn't care about "boolean flags" -- they care about deploying safely.
-
-### Functional vs. Emotional vs. Social Jobs
-
-Every job has three dimensions. Most product teams only think about functional jobs. The best teams address all three:
-
-| Dimension | Question | Example |
-|-----------|----------|---------|
-| **Functional** | What task are they trying to get done? | "Roll out a feature to 10% of users" |
-| **Emotional** | How do they want to feel? | "Confident that this won't break production" |
-| **Social** | How do they want to be perceived? | "Seen as someone who ships reliably" |
-
-When writing JTBD statements, the primary statement covers the functional job. Add a note about emotional and social dimensions when they are strong motivators.
+1. **Understand the product and scope** ; read available documentation, code, or ask the user to describe the system. Agree on scope boundaries upfront.
+2. **Identify the personas** ; who are the distinct user types? What's their primary goal when they interact with the product?
+3. **Build the use case persona table** ; map each persona to their outcomes, how they accomplish them today, and what the future could look like.
+4. **Flag open questions** ; explicitly call out unknowns rather than guessing. Sparse "Future" and "North Star" columns are expected; that's what the team needs to define.
 
 ## Persona Format
 
-For each persona, create a structured profile:
+Keep personas concise. A short paragraph describing the role, a scope note if needed, and their primary goal. No fictional names or demographic details.
 
 ```markdown
-### [Role Title]
+### 1. [Role Title]
 
-| Attribute | Detail |
-|-----------|--------|
-| **Role** | What they do in relation to the product |
-| **Tools** | What tools and interfaces they use |
-| **Key needs** | Their top 3-5 requirements from the product |
-| **Pain points** | Their top 3-5 frustrations or unmet needs |
-| **Frequency** | How often they interact with the product and in what patterns |
+[1-3 sentence description of who they are, what they do, and why they matter
+in the context of this product. Combine similar roles into one persona when
+their interaction with the product is the same.]
+
+**Not in scope:** [Clarify who is excluded from this persona if the boundary
+is ambiguous. Omit if obvious.]
+
+**Primary goal(s) why they use [Product]:** [One sentence capturing their
+core motivation]
 ```
 
 ### Rules for Good Personas
 
-- **Role, not person** -- Describe the role and its responsibilities, not a fictional character with a name and photo. "Sarah, 34, loves hiking" adds nothing
-- **Grounded in evidence** -- Every attribute should come from research, interviews, usage data, or documentation. Flag assumptions explicitly
-- **Distinct from each other** -- If two personas have the same needs, tools, and pain points, they're the same persona. Merge them
-- **Include the "why they care" dimension** -- Don't just list needs; explain what's at stake for them if those needs aren't met
-- **Capture frequency and patterns** -- A user who touches the product daily has fundamentally different needs than one who uses it quarterly
+- **Role, not character** ; describe the role and responsibilities, not a fictional person. "Sarah, 34, loves hiking" adds nothing.
+- **Combine when interactions are identical** ; if two roles touch the product the same way, merge them into one persona with a note explaining why.
+- **Include scope boundaries** ; say who is NOT included when the persona name is broad (e.g., "Software Engineer" but not infra engineers).
+- **Flag open questions** ; if you don't know how a persona interacts with the product today, say so explicitly with a blockquote callout.
 
-### How to Discover Personas
+## Use Case Persona Table
 
-Ask these questions:
-
-**From documentation:**
-- Who is mentioned as a user, stakeholder, or audience in design docs, PRDs, and strategy docs?
-- Who appears in the RBAC/permissions model? Different permission levels often indicate different personas
-- Who is mentioned in onboarding guides? Are there different guides for different roles?
-- Who files bugs, requests features, or gives feedback in Slack or issue trackers?
-
-**From the codebase:**
-- What authentication roles exist? (admin, developer, viewer, integrations)
-- Are there different UI views or dashboards for different user types?
-- Does the API have different access patterns (SDK vs. UI vs. API key)?
-
-**From the user directly:**
-- "Who uses this product day-to-day?"
-- "Who uses it occasionally but has high-stakes interactions?"
-- "Who cares about this product's output even if they never log in?"
-- "Who gets paged when this product breaks?"
-- "Who decides whether to invest more in this product?"
-
-## Use Case Format
-
-Group use cases by product area, then write each one as:
+This is the core deliverable. One table that maps every persona to their outcomes, current workflow, and future vision.
 
 ```markdown
-### [Product Area Name]
+## Use Case Persona Table
 
-[1-2 sentence description of what this area does and why it matters]
-
-**Key capabilities:**
-- Capability 1
-- Capability 2
-- Capability 3
+| **Persona** | **Outcome / JTBD** | **How They Do It Today** | **Future** | **North Star** |
+|---|---|---|---|---|
+| **[Persona 1]** | [Outcome they need] | [Current workflow, tools, workarounds] | [Near-term improvement] | [Long-term vision] |
+| | [Second outcome] | [Current workflow] | [Near-term improvement] | |
+| **[Persona 2]** | [Outcome they need] | [Current workflow] | | |
 ```
 
-## JTBD Scenario Format
+### Rules for the Table
 
-For each major job, create a full scenario:
+- **Outcome, not feature** ; write what the persona is trying to achieve, not what button they click. "Enable progressive feature rollout to ensure quality" not "Create a feature flag."
+- **One outcome per row** ; a persona can have multiple rows for different outcomes.
+- **Current state is specific** ; name the actual tools, processes, and workarounds. "Coordinate enablement via spreadsheets, Slack, and PMs" is good. "Uses existing tools" is not.
+- **Future and North Star can be sparse** ; these columns are intentionally left for the team to define. Fill in what's known; leave blanks where the team needs to make decisions. That gap IS the value of the document.
+- **North Star is aspirational** ; it describes the ideal end state, not the next sprint. It should feel ambitious but grounded.
 
-```markdown
-### JTBD [N]: [Job Title]
+## JTBD Statement Guidance
 
-> **When** [situation],
-> **I want to** [action],
-> **So that** [outcome].
+When writing the "Outcome / JTBD" column, follow this pattern:
 
-| Who | How [Product] Helps |
-|-----|---------------------|
-| Persona 1 | What they specifically do in this job |
-| Persona 2 | What they specifically do in this job |
-| Persona 3 | What they specifically do in this job |
-
-**Metrics:** [How you'd measure whether this job is being done well]
+```
+[Verb] + [object] + [qualifying context]
 ```
 
-### Rules for Good JTBD Scenarios
+Examples:
+- "Enable progressive feature rollout to ensure quality"
+- "Deploy code continuously without exposing unfinished features"
+- "Get feedback and reduce cycle time on the feedback loop"
+- "Access new features for competitive advantage while protecting live campaigns"
 
-- **Every job must map to at least two personas** -- If only one persona cares about a job, it might be too narrow. If only one persona is involved, the "Who" table still shows how they interact
-- **Metrics are required** -- If you can't measure whether the job is being done well, the job statement is too vague
-- **Include the "done poorly" version** -- What happens today without the product, or what happens when the product fails at this job? This grounds the scenario in real stakes
-- **Order jobs by impact** -- Put the highest-impact, most-used jobs first. The reader should understand the product's core value in the first three JTBD scenarios
+**What makes a good outcome statement:**
+- **Situation-first** ; start with what the persona is trying to accomplish, not how the product implements it
+- **Solution-agnostic** ; describe the desired outcome, not the product mechanics
+- **One outcome per row** ; if you need "and" in the statement, split it into two rows
 
 ## Document Structure
 
-The complete output should follow this structure:
-
 ```markdown
-# [Product]: Personas, Use Cases & JTBD
+# [Product]: User Journeys and Personas
 
-> [1-2 sentence product description including origin story if relevant]
+Scope: [What area of the product this covers]. This document captures who
+uses [Product], what they're trying to accomplish, and how they do it today.
+The "Future" and "North Star" columns are intentionally sparse; that's what
+the team needs to define.
 
 ---
 
-## 1. Personas
+## Personas
 
-### 1.1 [Persona Name]
-[Persona table]
+### 1. [Role Title]
+[Description paragraph]
+**Primary goal(s) why they use [Product]:** [Goal]
 
-### 1.2 [Persona Name]
-[Persona table]
+### 2. [Role Title]
+[Description paragraph]
+**Primary goal(s) why they use [Product]:** [Goal]
 
 ...
 
 ---
 
-## 2. Primary Use Cases
+## Use Case Persona Table
 
-### 2.1 [Product Area]
-[Description + key capabilities]
-
-### 2.2 [Product Area]
-[Description + key capabilities]
-
-...
+| **Persona** | **Outcome / JTBD** | **How They Do It Today** | **Future** | **North Star** |
+|---|---|---|---|---|
+| **[Persona]** | [Outcome] | [Current workflow] | [Near-term] | [Long-term] |
+| | [Outcome 2] | [Current workflow] | | |
+| **[Persona]** | [Outcome] | [Current workflow] | | |
 
 ---
 
-## 3. Jobs to Be Done (JTBD)
+## Open Questions
 
-### JTBD 1: [Job Title]
-[JTBD statement + persona table + metrics]
-
-### JTBD 2: [Job Title]
-[JTBD statement + persona table + metrics]
-
-...
+- [Explicit unknowns that need answers from the team]
+- [Things you flagged during research that need validation]
 
 ---
 
-## 4. Context
-[Scale metrics, competitive landscape, platform stats]
+## Sources
 
----
-
-## 5. Sources
-[Where the information came from]
+- [Where the information came from: interviews, docs, code, Slack, etc.]
 ```
 
 ## Questions to Ask Users
 
-### To understand the product
-- "What does this product do in one sentence?"
-- "Why was it built? What problem did it replace or solve?"
-- "How long has it been around, and how has it grown?"
-- "What are the major feature areas or capabilities?"
+### To scope the document
+- "What product or product area should this cover?"
+- "Are there personas we should explicitly exclude?"
 
 ### To identify personas
 - "Who are the primary users? Walk me through the different roles."
 - "Do different people use different parts of the product?"
-- "Who is the most frequent user? Who is the most important user? Are they the same person?"
 - "Who benefits from this product without ever logging in?"
-- "What are the top pain points you hear from each user type?"
 
-### To map jobs
-- "What's the single most important thing this product helps people do?"
-- "Walk me through what happens when [primary user] needs to [primary action]."
-- "What would happen if this product didn't exist? How would people do this work?"
-- "What are the top 3 things users ask for that the product doesn't do yet?"
-- "Are there use cases where people use the product in ways you didn't intend?"
+### To map current state
+- "Walk me through what happens when [persona] needs to [outcome]."
+- "What tools, spreadsheets, Slack channels, or workarounds are involved?"
+- "What's the most painful part of the current workflow?"
 
-### To find sources
-- "Are there design docs, PRDs, strategy docs, or onboarding guides I can read?"
-- "Is there a codebase I can explore for architecture and permissions?"
-- "Are there user interview transcripts, survey results, or feedback channels?"
-- "Is there an existing persona doc or competitive analysis?"
-
-## Common Mistakes to Flag
-
-- **Feature lists disguised as use cases** -- "Create a flag, edit a flag, delete a flag" are CRUD operations, not jobs to be done. The job is "ship features safely"
-- **Personas with no pain points** -- If a persona has no frustrations, they're either not a real persona or you haven't done enough research
-- **JTBD statements that describe product mechanics** -- "When I click the submit button" is not a situation. "When I have a feature ready for testing" is
-- **Missing the emotional/social dimension** -- Engineers want to "deploy safely" (functional), but they also want to "feel confident" (emotional) and "be seen as reliable" (social). The best products address all three
-- **Too many personas** -- If you have more than 8 personas, some probably overlap. Merge aggressively. The test: if you removed a persona, would any JTBD scenario lose a row in its table?
-- **Jobs without metrics** -- If you can't measure it, it's too vague. Push for specific, observable indicators of whether the job is done well
-- **Confusing current product capabilities with jobs** -- The product's current feature set is one way to do the job. The job exists independent of the product. Write the job first, then show how the product addresses it
-- **Skipping "What happens without this product?"** -- The strongest JTBD documents include the status quo or competitor comparison so readers understand what's at stake
+### To define future state
+- "What should change in the next quarter? The next year?"
+- "If you could wave a magic wand, what would the ideal experience look like?"
+- "Are there outcomes that are completely unserved today?"
 
 ## Related Skills
 
 - Problem Definition
 - Conducting User Interviews
-- Analyzing User Feedback
-- Product Sense Interviews
 - Writing PRDs
-- Defining Product Vision

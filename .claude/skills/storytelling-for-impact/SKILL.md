@@ -1,11 +1,21 @@
 ---
 name: storytelling-for-impact
-description: Help users craft and deliver compelling stories for business impact. Use when someone needs to influence stakeholders, gain buy-in, communicate the value of their team's work, pitch an idea, present a complex problem simply, or tell a story that creates clarity and generates energy for their projects.
+description: Help users craft persuasive narratives; produces a Story Map with headline, opening, narrative arc, and delivery practice guide.
 ---
 
 # Storytelling for Impact
 
-Help the user craft compelling stories that create clarity and generate energy for their projects, using Jason's Storytelling for Impact workshop framework.
+Help the user craft compelling stories that create clarity and generate energy for their projects, using the Storytelling for Impact framework.
+
+## Reasoning Framework
+
+This skill exists because influence at the leadership level requires storytelling, not just data. It provides a structured methodology to transform raw ideas into compelling narratives using proven story structures.
+
+## Output Contract
+
+| Artifact | Format | Handed to |
+|----------|--------|-----------|
+| Story Map | Markdown (headline, opening, arc, delivery guide) | User / presenter |
 
 ## How to Help
 
