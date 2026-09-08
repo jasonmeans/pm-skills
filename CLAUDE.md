@@ -181,6 +181,7 @@ All skills live in `.claude/skills/` and are auto-discovered by Claude Code.
 | Create User Interview | `create-user-interview/` | Create minimalist user interview templates |
 | Analyze User Interview | `analyze-user-interview/` | Analyze completed user interviews into research summaries |
 | DevEx Survey | `devex-survey/` | Create and analyze Developer Experience surveys |
+| Analyze AI Proficiency | `analyze-ai-proficiency/` | Set up and process local AI usage and survey files into workflow-level probabilities |
 | Create Architecture Diagram | `create-architecture-diagram/` | Three-tier architecture diagrams using Mermaid |
 | Create Release Notes | `create-release-notes/` | Generate release notes from Jira + source repos |
 | Sourcegraph Search | `sourcegraph-search/` | Cross-repo code search via Sourcegraph MCP |

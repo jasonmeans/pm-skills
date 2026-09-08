@@ -91,6 +91,12 @@ For quick-start usage instructions and contribution guidelines, see [README.md](
 
 ---
 
+### Cross-tool Analysis Specifications
+
+| File | Specification | Purpose |
+|------|---------------|---------|
+| `ai-proficiency-spec.md` | **Developer AI Workflow Scope** | Claude Code handoff with local CSV/spreadsheet scripts, survey-only validation, calibrated conditional probabilities, and tests. |
+
 ### GPT Prompts — Markdown Format (`gpt/`)
 
 | File | Prompt Name | Purpose |

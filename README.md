@@ -18,9 +18,12 @@ Skills are auto-discovered by Claude Code. Open your terminal and invoke one by 
 /create-prd
 /decision-brief
 /analyze-user-interview
+/analyze-ai-proficiency /path/to/exports
 ```
 
 Claude Code finds the matching `SKILL.md` file in `.claude/skills/` and follows its instructions. Each skill defines its purpose, required inputs, expected outputs, and step-by-step execution.
+
+For developer AI workflow analysis, run `/analyze-ai-proficiency` with an export folder or an existing `manifest.json`. The skill sets up Python dependencies, maps the local CSV/Excel inputs, and produces per-developer probabilities and a validation report. Use `/analyze-ai-proficiency setup` to prepare the environment or `/analyze-ai-proficiency demo` to try invented data. Requires Python 3.11 or 3.12 and the full repository. See the [analysis specification](prompts/ai-proficiency-spec.md) for the measurement model and input requirements.
 
 ### Use a Prompt
 
