@@ -79,8 +79,10 @@ def parse_frontmatter(text: str) -> dict:
         key, value = match.group(1), match.group(2).strip()
         if value in (">", "|", ">-", "|-", ">+", "|+"):
             value = ""
-        elif len(value) >= 2 and value[0] == value[-1] and value[0] in "'\"":
-            value = value[1:-1]
+        elif len(value) >= 2 and value[0] == value[-1] == '"':
+            value = value[1:-1].replace('\\"', '"').replace("\\\\", "\\")
+        elif len(value) >= 2 and value[0] == value[-1] == "'":
+            value = value[1:-1].replace("''", "'")
         data[key] = value
     return data
 

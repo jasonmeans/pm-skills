@@ -1,6 +1,6 @@
 ---
 name: map-stakeholders
-description: Map stakeholders for a project or decision: who decides, influences, or can block, and what each cares about, with a power/interest grid, RACI, and engagement plan. Use when starting an initiative, before a contentious decision, or when alignment keeps breaking down.
+description: Map stakeholders for a project or decision (who decides, influences, or can block, and what each cares about) with a power/interest grid, RACI, and engagement plan. Use when starting an initiative, before a contentious decision, or when alignment keeps breaking down.
 ---
 
 # Map Stakeholders

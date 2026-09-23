@@ -8,6 +8,9 @@ Errors (exit 1):
   - placeholder skills (`todo-` prefix or a "Placeholder" marker)
   - relative links, or `scripts/`, `references/`, `library/` (etc.) paths, that do not exist
   - skills missing from README.md (catalog drift)
+  - YAML frontmatter a strict parser rejects, in any markdown file in the repo.
+    GitHub (Ruby Psych) refuses an unquoted value containing ': ' even though
+    Claude Code and Codex read it leniently.
 Warnings (one line per skill): a description that never says when to use the
 skill, and contract sections that cannot be found under any common heading.
 
@@ -16,6 +19,7 @@ skill, and contract sections that cannot be found under any common heading.
 from __future__ import annotations
 
 import argparse
+import os
 import re
 import sys
 from pathlib import Path
@@ -30,6 +34,9 @@ WHEN = re.compile(
     r"|invoke (?:when|for|to)|trigger)", re.IGNORECASE
 )
 
+BLOCK_SCALAR = re.compile(r"^[|>][+-]?\d?$")
+SKIP_DIRS = {".git", "node_modules", "outputs", "__pycache__", "ai-proficiency-runs"}
+
 # Contract section -> heading fragments that satisfy it (lowercase). "When to use"
 # is checked in the description, which is what both harnesses match against.
 SECTIONS = {
@@ -39,6 +46,73 @@ SECTIONS = {
     "examples": ("example",),
     "guardrails": ("guardrail", "non-goal", "what not to do", "common mistakes", "anti-pattern"),
 }
+
+
+def scalar_problem(value: str) -> str:
+    """Why a strict YAML parser would reject (or silently shorten) a one-line value; '' if fine."""
+    if not value or BLOCK_SCALAR.match(value):
+        return ""
+    if value[0] in "\"'":
+        pattern = r'"(?:[^"\\]|\\.)*"' if value[0] == '"' else r"'(?:[^']|'')*'"
+        closed = re.match(pattern, value)
+        if not closed:
+            return "unterminated quoted value"
+        rest = value[closed.end():].strip()
+        return "" if not rest or rest.startswith("#") else "text after the closing quote"
+    if value[0] in "[{":
+        return "" if value.endswith("]" if value[0] == "[" else "}") else "unclosed flow collection"
+    if value[0] == "#":
+        return "the value is a comment, so the key is empty"
+    if value[0] in ",&*!|>%@`" or (value[0] in "-?:" and value[1:2] in ("", " ")):
+        return f"a plain value cannot start with '{value[0]}'; quote the value"
+    return line_problem(value)
+
+
+def line_problem(text: str) -> str:
+    if ": " in text or text.endswith(":"):
+        return "unquoted ': ' reads as a new key in strict YAML; rephrase or quote the value"
+    if " #" in text:
+        return "' #' starts a YAML comment and cuts the value short; rephrase or quote the value"
+    return ""
+
+
+def frontmatter_yaml_errors(text: str) -> list:
+    """Strict-YAML problems in flat `key: value` frontmatter (nested blocks are not checked)."""
+    lines = text.splitlines()
+    if not lines or lines[0].strip() != "---":
+        return []
+    errors, in_block, plain = [], False, False
+    for number, line in enumerate(lines[1:], 2):
+        if line.rstrip() == "---":
+            return errors
+        if not line.strip() or line.lstrip().startswith("#"):
+            continue
+        if line[0] in " \t":
+            problem = line_problem(line.strip()) if plain and not in_block else ""
+            if problem:
+                errors.append(f"line {number}: {problem}")
+            continue
+        match = re.match(r"^([^\s:#'\"][^:]*?):(?:\s+(.*))?$", line)
+        if not match:
+            errors.append(f"line {number}: not a 'key: value' line")
+            in_block = plain = False
+            continue
+        value = (match.group(2) or "").strip()
+        in_block = bool(BLOCK_SCALAR.match(value))
+        problem = scalar_problem(value)
+        if problem:
+            errors.append(f"line {number} ({match.group(1)}): {problem}")
+        plain = bool(value) and not in_block and value[0] not in "\"'[{"
+    return errors + ["frontmatter is never closed with '---'"]
+
+
+def markdown_files(repo: Path) -> list:
+    found = []
+    for dirpath, dirnames, filenames in os.walk(repo):
+        dirnames[:] = sorted(d for d in dirnames if d not in SKIP_DIRS and not d.endswith("-workspace")
+                             and (not d.startswith(".") or d in (".claude", ".github")))
+        found.extend(Path(dirpath) / f for f in sorted(filenames) if f.endswith(".md"))
+    return found
 
 
 def check_skill(skill_dir: Path, repo: Path, readme: str) -> tuple:
@@ -109,7 +183,13 @@ def main(argv: list = None) -> int:
             print(f"ERROR {skill_dir.name}: {message}")
         for message in warnings:
             print(f"warn  {skill_dir.name}: {message}")
-    print(f"{len(skill_dirs)} skills checked: {error_count} errors, {warning_count} warnings")
+    files = markdown_files(repo)
+    for path in files:
+        for message in frontmatter_yaml_errors(path.read_text(encoding="utf-8", errors="replace")):
+            error_count += 1
+            print(f"ERROR {path.relative_to(repo)}: frontmatter {message}")
+    print(f"{len(skill_dirs)} skills and {len(files)} markdown files checked: "
+          f"{error_count} errors, {warning_count} warnings")
     return 1 if error_count else 0
 
 

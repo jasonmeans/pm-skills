@@ -1,6 +1,6 @@
 ---
 name: create-figma-mockup
-description: Turn a PRD or idea into a low-fidelity mockup: screen inventory, wireframe spec with states and interactions, and a single-file HTML wireframe you can import into Figma. Use to visualize a feature before design starts. It does not edit Figma files directly.
+description: Turn a PRD or idea into a low-fidelity mockup (screen inventory, wireframe spec with states and interactions, and a single-file HTML wireframe you can import into Figma). Use to visualize a feature before design starts. It does not edit Figma files directly.
 ---
 
 # Create Figma Mockup

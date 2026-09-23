@@ -1,6 +1,6 @@
 ---
 name: validate-hypothesis
-description: Turn a product assumption into a testable hypothesis and validation plan: riskiest assumption, cheapest test, success and kill criteria set in advance, A/B sample size, and a results readout. Use before investing in a feature or when a team disagrees about what users want.
+description: Turn a product assumption into a testable hypothesis and validation plan covering the riskiest assumption, cheapest test, success and kill criteria set in advance, A/B sample size, and a results readout. Use before investing in a feature or when a team disagrees about what users want.
 ---
 
 # Validate a Hypothesis

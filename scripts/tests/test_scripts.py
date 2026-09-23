@@ -131,6 +131,32 @@ class LintSkillsTests(TmpCase):
                          "never says when", "no section for"):
             self.assertIn(expected, out)
 
+    def test_frontmatter_yaml_matches_strict_parsers(self):
+        check = lint_skills.frontmatter_yaml_errors
+        bad = {
+            "---\ndescription: Do NOT trigger for: one-pagers.\n---\n": "new key",
+            "---\ndescription: Ranked #1 # tidy\n---\n": "comment",
+            "---\ndescription: \"never closed\n---\n": "unterminated",
+            "---\ndescription: - starts like a list\n---\n": "cannot start",
+            "---\ndescription: Long plain value\n  that continues: here\n---\n": "new key",
+            "---\nname: x\n": "never closed",
+        }
+        for text, expected in bad.items():
+            self.assertTrue(any(expected in e for e in check(text)), (text, check(text)))
+        good = [
+            '---\nname: a-b\ndescription: Plain, with (parens), "quotes" mid-line, and https://x.y/z.\n---\n',
+            '---\ndescription: "Quoted: fine, with \\"escapes\\""\n---\n',
+            "---\ndescription: 'It''s fine: really'\n---\n",
+            "---\ndescription: >-\n  Block scalars allow: anything # here\ntags: [a, b]\n---\n",
+            "---\nmetadata:\n  type: project\n  tags: [a, b]\n---\n",
+        ]
+        for text in good:
+            self.assertEqual(check(text), [], text)
+
+    def test_quoted_frontmatter_values_are_unescaped(self):
+        meta = token_audit.parse_frontmatter('---\na: "Say \\"hi\\": ok"\nb: \'It\'\'s\'\n---\n')
+        self.assertEqual(meta, {"a": 'Say "hi": ok', "b": "It's"})
+
     def test_readme_match_is_exact(self):
         skill(self.tmp, "create-prd", "Write a PRD. Use when asked.", self.BODY)
         write(self.tmp / "README.md", "`create-prd-one-pager` only\n")

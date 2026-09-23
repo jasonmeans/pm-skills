@@ -1,6 +1,6 @@
 ---
 name: gtm-plan
-description: Create a go-to-market plan for a launch: tier, audience, positioning and messaging, channels, enablement for sales and support, a timeline by release stage, metrics, and owners. Use when coordinating a launch across teams. For the go/no-go review, use launch-checklist.
+description: Create a go-to-market plan for a launch, covering tier, audience, positioning and messaging, channels, enablement for sales and support, a timeline by release stage, metrics, and owners. Use when coordinating a launch across teams. For the go/no-go review, use launch-checklist.
 ---
 
 # Go-To-Market Plan

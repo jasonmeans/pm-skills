@@ -1,6 +1,6 @@
 ---
 name: automate-review-process
-description: Design a risk-tiered review process for code, design, or approvals: measure review latency, split the work between checks, AI reviewers, and humans, and produce the policy plus starter config. Use when reviews are slow or inconsistent, or when adding an AI review gate.
+description: Design a risk-tiered review process for code, design, or approvals. Measures review latency, splits the work between checks, AI reviewers, and humans, and produces the policy plus starter config. Use when reviews are slow or inconsistent, or when adding an AI review gate.
 ---
 
 # Automate the Review Process

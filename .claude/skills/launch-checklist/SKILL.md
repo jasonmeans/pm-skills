@@ -1,6 +1,6 @@
 ---
 name: launch-checklist
-description: Stage-gate launch readiness review (Alpha, Closed Beta, Open Beta, GA): checklist by function with owners, evidence, and sign-offs, ending in go / no-go. Use before promoting a release or when asked "are we ready to launch?" For launch strategy and messaging, use gtm-plan.
+description: Stage-gate launch readiness review for Alpha, Closed Beta, Open Beta, and GA. Builds a checklist by function with owners, evidence, and sign-offs, ending in go / no-go. Use before promoting a release or when asked "are we ready to launch?" For launch strategy and messaging, use gtm-plan.
 ---
 
 # Launch Checklist
