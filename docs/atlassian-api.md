@@ -1,6 +1,8 @@
 # Atlassian REST API Reference
 
-All project tracking, documentation, and IP lives in Atlassian.
+Optional reference for teams that track work in Jira and Confluence. No skill in this repo depends on it; skills write markdown files.
+
+**Jira hierarchy:** Initiative → Milestone → Epic → Story.
 
 | Tool | URL | Purpose |
 |------|-----|---------|
