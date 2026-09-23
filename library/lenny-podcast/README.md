@@ -3,7 +3,9 @@
 88 skills curated from [Lenny's Podcast](https://www.lennyspodcast.com/).
 Source: [refoundai.com/lenny-skills](https://refoundai.com/lenny-skills).
 
-All skills live in this folder and are prefixed with `lenny-`.
+All playbooks live in this folder and are prefixed with `lenny-`.
+
+**Reference library, not auto-loaded.** These are read on demand: open this catalog, then the one playbook you need. They used to sit in `.claude/skills/lenny-podcast/`. Claude Code never discovered them there (it looks one folder deep), but Codex recurses, so sharing the skills folder with Codex would have added all 88 descriptions (about 16,000 characters) to every Codex session. The folder names don't match the `name:` in each file's frontmatter, which is fine for a library but would need fixing before promoting a playbook to a real skill.
 
 ## Catalog
 
