@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>[Feature] wireframes</title>
+<style>
+  /* Low-fidelity wireframe kit: grayscale, system fonts, no external assets.
+     Copy this file, keep the CSS, and replace the example screens. */
+  :root { --ink: #1f1f1f; --line: #9a9a9a; --fill: #efefef; --muted: #6b6b6b; --note: #fff7cc; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 24px; font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif;
+         color: var(--ink); background: #fafafa; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .meta { color: var(--muted); margin: 0 0 24px; }
+  .screens { display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-start; }
+  .screen { width: 390px; }
+  .screen.desktop { width: min(1280px, 100%); }
+  .screen > h2 { font-size: 14px; margin: 0 0 8px; }
+  .frame { border: 2px solid var(--ink); border-radius: 16px; background: #fff; min-height: 640px;
+           display: flex; flex-direction: column; overflow: hidden; }
+  .desktop .frame { border-radius: 6px; min-height: 560px; }
+  .bar { display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .bar.bottom { margin-top: auto; border-top: 1px solid var(--line); border-bottom: 0; justify-content: space-around; }
+  .body { padding: 12px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+  .row { display: flex; gap: 10px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 10px; }
+  .grow { flex: 1; min-width: 0; }
+  .box { border: 1px dashed var(--line); background: var(--fill); border-radius: 6px; padding: 10px; color: var(--muted); }
+  .img { min-height: 120px; border: 1px solid var(--line); border-radius: 6px;
+         background: repeating-linear-gradient(45deg, var(--fill) 0 8px, #e2e2e2 8px 16px); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 16px;
+         border: 2px solid var(--ink); border-radius: 8px; background: #fff; font-weight: 600; white-space: nowrap; }
+  .btn.primary { background: var(--ink); color: #fff; }
+  .input { min-height: 44px; padding: 10px 12px; border: 1px solid var(--ink); border-radius: 6px;
+           background: #fff; color: var(--muted); }
+  .list > * { padding: 10px 0; border-bottom: 1px solid var(--fill); }
+  .chip { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; }
+  .muted { color: var(--muted); }
+  .center { text-align: center; align-items: center; justify-content: center; }
+  .pin { display: inline-flex; width: 20px; height: 20px; flex: none; align-items: center; justify-content: center;
+         border-radius: 50%; background: #c62828; color: #fff; font-size: 11px; font-weight: 700; }
+  .notes { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+  .note { display: flex; gap: 6px; padding: 8px 10px; border: 1px solid #d9c96a; border-radius: 6px;
+          background: var(--note); font-size: 12px; }
+  @media (max-width: 440px) { body { padding: 12px; } .screen { width: 100%; } }
+</style>
+</head>
+<body>
+<h1>[Feature]: low-fidelity wireframes</h1>
+<p class="meta">Source: [PRD] · Version 1 · [YYYY-MM-DD]. Grayscale on purpose: structure and content, not visual design.</p>
+
+<div class="screens">
+
+  <!-- One section per screen. Add class="screen desktop" for a wide frame. -->
+  <section class="screen" id="S1">
+    <h2>S1 · Reports (default)</h2>
+    <div class="frame">
+      <div class="bar"><strong class="grow">Reports</strong><span class="btn">Filter</span></div>
+      <div class="body">
+        <div class="input">Search reports</div>
+        <div class="row"><span class="chip">Last 30 days</span><span class="chip">My team</span></div>
+        <div class="list">
+          <div class="row">
+            <div class="grow"><strong>Weekly usage by team</strong><div class="muted">Updated 2 hours ago</div></div>
+            <span class="pin">1</span><span class="btn">Export</span>
+          </div>
+          <div class="row">
+            <div class="grow"><strong>Quarterly retention, all regions and every customer segment</strong>
+              <div class="muted">Updated yesterday</div></div>
+            <span class="btn">Export</span>
+          </div>
+        </div>
+      </div>
+      <div class="bar bottom"><span>Home</span><strong>Reports</strong><span>Settings</span></div>
+    </div>
+    <div class="notes">
+      <div class="note"><span class="pin">1</span>Export runs in the background; the row shows progress and a link when done.</div>
+    </div>
+  </section>
+
+  <section class="screen" id="S1-empty">
+    <h2>S1 · Reports (empty state)</h2>
+    <div class="frame">
+      <div class="bar"><strong class="grow">Reports</strong></div>
+      <div class="body center">
+        <div class="img" style="width: 160px"></div>
+        <strong>No reports yet</strong>
+        <p class="muted">Reports your team creates appear here.</p>
+        <span class="btn primary">Create a report</span>
+      </div>
+      <div class="bar bottom"><span>Home</span><strong>Reports</strong><span>Settings</span></div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

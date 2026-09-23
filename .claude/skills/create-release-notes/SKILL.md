@@ -1,6 +1,6 @@
 ---
 name: create-release-notes
-description: Monitor MRs into a codebase area and generate release notes summarizing all changes.
+description: Generate weekly release notes by reconciling merged GitLab MRs in a codebase area with a user-provided feature list. Use when drafting release notes for shipped work.
 ---
 
 # PM: Create Release Notes

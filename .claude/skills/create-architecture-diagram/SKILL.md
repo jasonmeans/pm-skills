@@ -1,6 +1,6 @@
 ---
 name: create-architecture-diagram
-description: Help users document system architecture with Mermaid diagrams; produces overview, tier deep-dives, data flows, and a component summary table.
+description: Help users document system architecture with Mermaid diagrams; produces overview, tier deep-dives, data flows, and a component summary table. Use when explaining or documenting how a system is built.
 ---
 
 # Architecture Diagrams (Mermaid)

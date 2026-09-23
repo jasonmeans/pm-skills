@@ -1,0 +1,82 @@
+[
+  {
+    "query": "I'm the PM for our billing team and we're redesigning the invoicing flow. I need to write up the requirements before sprint planning next week — engineering, design, and our finance stakeholders all need to align on what we're building and why.",
+    "should_trigger": true
+  },
+  {
+    "query": "we're adding push notifications to the mobile app and i need to document the feature properly. not super technical, just something the whole team can reference to understand the scope and success criteria",
+    "should_trigger": true
+  },
+  {
+    "query": "Help me write a product requirements document for our new admin dashboard. The current one is slow and confusing — users have been filing support tickets about it for months. We have some design mockups already.",
+    "should_trigger": true
+  },
+  {
+    "query": "My VP asked me to write up the spec for our onboarding improvements before the roadmap review on Thursday. It needs to cover the problem, what we're building, and how we'll know if it worked.",
+    "should_trigger": true
+  },
+  {
+    "query": "we're launching a new API key management feature for developers. i need something that captures the user needs, what we're shipping, success metrics, and key risks. cross-functional doc that eng and product can both work from.",
+    "should_trigger": true
+  },
+  {
+    "query": "I'm a PM at a SaaS company and we're adding SAML SSO support. I need to write up the product requirements — what's the user problem, what are we actually shipping, and how do we measure success. We have a design doc at docs/saml-sso.md.",
+    "should_trigger": true
+  },
+  {
+    "query": "need to document our search revamp feature. we've done some user research and have wireframes. just need a standard requirements doc that covers goals, user stories, success metrics, and the milestone plan",
+    "should_trigger": true
+  },
+  {
+    "query": "our team is building a custom reporting module and i need a PRD that covers the problem statement, user requirements, how we'll measure success, and the phased rollout plan. targeting engineers and design as the main audience",
+    "should_trigger": true
+  },
+  {
+    "query": "Help me write a requirements doc for the notification preferences feature. Users are complaining they get too many emails and can't control what they receive. I have some initial ideas but need to formalize them.",
+    "should_trigger": true
+  },
+  {
+    "query": "I need to create a PRD for our new data export feature. Users frequently ask support for bulk data downloads. The doc needs to cover what we're building, who it's for, the key user stories, success metrics, and risks.",
+    "should_trigger": true
+  },
+  {
+    "query": "I need a PRD for our SSO project but it has to be a one-pager — my CEO only has 10 minutes in the roadmap review and I need to get her sign-off on the direction.",
+    "should_trigger": false
+  },
+  {
+    "query": "I'm handing this spec directly to Claude Code to build from. I need it to include file structure, API contracts with request/response examples, and the exact code patterns to use.",
+    "should_trigger": false
+  },
+  {
+    "query": "Write me a full engineering spec for our checkout redesign with data models, API contracts, acceptance criteria per user story, and migration steps.",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to decide whether to build our own analytics pipeline or buy Amplitude. Can you help me structure the options, evaluation criteria, and my recommendation for my VP?",
+    "should_trigger": false
+  },
+  {
+    "query": "We're kicking off discovery for a new feature and I need to understand what jobs our users are actually trying to do. Help me map out personas and end-to-end workflows before we write any specs.",
+    "should_trigger": false
+  },
+  {
+    "query": "I have 40 pages of user interview transcripts from last week's research sessions and I need to pull out the themes, pain points, and product signals from them.",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to write a product strategy memo for our 2026 platform vision — where we're going, what bets we're making, and how we'll win in the market. Audience is my leadership team.",
+    "should_trigger": false
+  },
+  {
+    "query": "Can you help me write the interview guide for our upcoming user research on the checkout flow? I need 8-10 questions that surface real behavior without leading the participant.",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to write a go-to-market plan for our new enterprise tier launch — messaging, sales enablement, pricing tiers, and launch timing across PM, marketing, and sales.",
+    "should_trigger": false
+  },
+  {
+    "query": "I need to map out my stakeholders for this initiative — who are the decision makers, who has influence, and who might block us. I want an engagement plan to get everyone aligned.",
+    "should_trigger": false
+  }
+]

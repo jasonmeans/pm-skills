@@ -1,6 +1,6 @@
 ---
 name: storytelling-for-impact
-description: Help users craft persuasive narratives; produces a Story Map with headline, opening, narrative arc, and delivery practice guide.
+description: Help users craft persuasive narratives; produces a Story Map with headline, opening, narrative arc, and delivery practice guide. Use when preparing a presentation, pitch, or talk that must persuade.
 ---
 
 # Storytelling for Impact

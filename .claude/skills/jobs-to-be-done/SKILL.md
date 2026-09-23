@@ -1,6 +1,6 @@
 ---
 name: jobs-to-be-done
-description: Help users define user needs with personas, a use case table (Outcome / How Today / Future / North Star), and open questions.
+description: Help users define user needs with personas, a use case table (Outcome / How Today / Future / North Star), and open questions. Use when clarifying who a product serves and what outcomes they need.
 ---
 
 # JTBD Personas & User Journeys

@@ -1,6 +1,6 @@
 ---
 name: analyze-user-interview
-description: Analyze a Zoom user interview — merges a VTT transcript with PM interview notes (markdown) to produce a complete research summary saved as a local markdown file.
+description: Analyze a Zoom user interview — merges a VTT transcript with PM interview notes (markdown) to produce a complete research summary saved as a local markdown file. Use after a user research session when you have the transcript and notes; for ordinary meetings, use convert-meeting-notes.
 ---
 
 # User Interview Analyzer
@@ -53,28 +53,17 @@ Record which fields are present and which are missing or empty. You will fill in
 
 ## Step 2: Parse the VTT Transcript
 
-Read the `.vtt` file using the Read tool. VTT files follow this format:
+Don't read the raw `.vtt`; cue numbers and timestamps are a large share of it. Compact it with the script (from the pm-skills repo root), which merges consecutive lines by the same speaker and keeps one timestamp per turn:
 
+```bash
+python3 scripts/vtt_to_transcript.py <interview.vtt> -o <tmp>/transcript.md
 ```
-WEBVTT
 
-1
-00:00:01.000 --> 00:00:04.500
-Speaker Name: Thank you for joining today.
-
-2
-00:00:05.000 --> 00:00:08.200
-Conference Room A: We were looking at the dashboard and...
-```
+Read the printed summary (speakers, word share, labels that look like rooms or devices), then read `transcript.md`. If the script is unavailable (this skill was copied outside the repo), read the `.vtt` directly and do 2a–2b by hand.
 
 ### 2a. Detect Conference Room Names
 
-Scan the speaker labels in the transcript. Flag any that appear to be conference room names or device names rather than real people, including patterns like:
-
-- `Conference Room`, `Room [A-Z0-9]`, `Room [Name]`
-- `iPhone`, `iPad`, `Android`
-- `H.323`, `SIP`, or other hardware endpoint labels
-- Any label that does not look like a person's name
+The script flags speaker labels that look like rooms or devices (`Conference Room`, `Room 4B`, `iPhone`, `H.323`, `SIP`, and similar). Also check for any other label that doesn't look like a person's name.
 
 **If conference room names are detected:** Stop and ask the user:
 
@@ -85,16 +74,19 @@ Scan the speaker labels in the transcript. Flag any that appear to be conference
 >
 > Please provide a mapping so I can attribute quotes and comments correctly."
 
-Wait for the user's response before continuing. Replace all conference room labels with real names in your working analysis.
+Wait for the user's response before continuing. Then rerun the script with the mapping so every quote is attributed correctly:
 
-### 2b. Build a Cleaned Transcript
+```bash
+python3 scripts/vtt_to_transcript.py <interview.vtt> -o <tmp>/transcript.md --rename "Conference Room A=Dana Lee"
+```
 
-After resolving all speaker names, produce a cleaned version of the transcript:
+### 2b. Work From the Cleaned Transcript
 
-- Merge consecutive utterances by the same speaker
-- Remove filler words sparingly (e.g., trailing "um um um" strings), but **preserve all substantive speech verbatim** — do not paraphrase or clean up the user's words
-- Note timestamps for key moments (large topic shifts, notable reactions, screen-share starts/stops)
-- Tag the interviewee's turns with their name; tag PM and engineers separately
+The script has already merged consecutive utterances and kept a `[hh:mm:ss]` timestamp per turn. While analyzing:
+
+- **Preserve all substantive speech verbatim.** Do not paraphrase or clean up the user's words in quotes.
+- Note timestamps for key moments (large topic shifts, notable reactions, screen-share starts and stops).
+- Tag the interviewee's turns with their name; tag the PM and engineers separately.
 
 ---
 

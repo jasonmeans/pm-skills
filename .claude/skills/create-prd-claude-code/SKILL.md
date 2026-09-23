@@ -1,6 +1,6 @@
 ---
 name: create-prd-claude-code
-description: Write a PRD optimized for AI coding agents (Claude Code, Codex). Includes standard product context plus implementation-specific sections -- file structure, code patterns, API contracts with request/response examples, test cases, migration steps, and sequenced build order. The output is designed so an AI coding tool can build directly from it.
+description: Write a PRD optimized for AI coding agents (Claude Code, Codex). Includes standard product context plus implementation-specific sections -- file structure, code patterns, API contracts with request/response examples, test cases, migration steps, and sequenced build order. The output is designed so an AI coding tool can build directly from it. Use when an AI coding agent will implement the spec.
 ---
 
 # Create PRD (AI Coding Agent)

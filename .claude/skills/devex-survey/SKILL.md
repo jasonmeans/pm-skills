@@ -1,6 +1,6 @@
 ---
 name: devex-survey
-description: Create or analyze Developer Experience surveys. Creation mode outputs a 9-question HaTS-aligned survey; Analysis mode outputs sentiment metrics with theme clustering.
+description: Create or analyze Developer Experience surveys. Creation mode outputs a 9-question HaTS-aligned survey; Analysis mode outputs sentiment metrics with theme clustering. Use when running a developer experience survey or analyzing its results.
 ---
 
 # DevEx Survey

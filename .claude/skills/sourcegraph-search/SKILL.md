@@ -1,6 +1,6 @@
 ---
 name: sourcegraph-search
-description: Search codebases across repositories using Sourcegraph MCP integration — code search, commit history, diffs, symbol navigation, and DeepSearch
+description: Search codebases across repositories using Sourcegraph MCP integration — code search, commit history, diffs, symbol navigation, and DeepSearch. Use when a question spans many repositories and a Sourcegraph MCP server is configured.
 ---
 
 # Sourcegraph Cross-Repo Search
